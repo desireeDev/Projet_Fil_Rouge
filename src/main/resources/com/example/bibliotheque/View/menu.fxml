@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bibliotheque.controller.MenuController">
+    <top>
+        <MenuBar>
+            <Menu text="Fichier">
+                <MenuItem text="Ouvrir" fx:id="itemOuvrir" onAction="#handleOuvrir"/>
+                <MenuItem text="Quitter" fx:id="itemQuitter" onAction="#handleQuitter"/>
+            </Menu>
+            <Menu text="Edition">
+                <MenuItem text="Sauvegarder" fx:id="itemSauvegarder" onAction="#handleSauvegarder"/>
+                <MenuItem text="Sauvegarder sous" fx:id="itemSauvegarderSous" onAction="#handleSauvegarderSous"/>
+            </Menu>
+            <Menu text="About"/>
+        </MenuBar>
+    </top>
+</BorderPane>
