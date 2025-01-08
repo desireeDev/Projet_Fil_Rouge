@@ -23,10 +23,10 @@ public class FileValidator {
             Schema schema = factory.newSchema(new File(FICHIER_XSD));
             Validator validator = schema.newValidator();
             validator.validate(new javax.xml.transform.stream.StreamSource(new File(FICHIER_XML)));
-            System.out.println("✅ Le fichier XML est valide !");
+            System.out.println("Good Le fichier XML est valide !");
             return true;
         } catch (SAXException | IOException e) {
-            System.out.println("❌ Erreur de validation : " + e.getMessage());
+            System.out.println(" Sorry : " + e.getMessage());
             return false;
         }
     }
