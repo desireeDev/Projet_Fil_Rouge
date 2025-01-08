@@ -16,4 +16,6 @@ module com.example.bibliotheque {
     exports com.example.bibliotheque;
     exports com.example.bibliotheque.Controller;
     opens com.example.bibliotheque.Controller to javafx.fxml;
+    opens com.example.bibliotheque.Model to javafx.base, jakarta.xml.bind;
+
 }

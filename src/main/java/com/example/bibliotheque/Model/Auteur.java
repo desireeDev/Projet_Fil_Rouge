@@ -2,27 +2,38 @@ package com.example.bibliotheque.Model;
 
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 @XmlType(propOrder = {"nom", "prenom"})
 public class Auteur {
-    private String nom;
-    private String prenom;
 
-    @XmlElement
+    private final SimpleStringProperty nom = new SimpleStringProperty();
+    private final SimpleStringProperty prenom = new SimpleStringProperty();
+
+    @XmlElement(name = "nom")
     public String getNom() {
-        return nom;
+        return nom.get();
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
+        this.nom.set(nom);
     }
 
-    @XmlElement
+    public StringProperty nomProperty() {
+        return nom;
+    }
+
+    @XmlElement(name = "prenom")
     public String getPrenom() {
-        return prenom;
+        return prenom.get();
     }
 
     public void setPrenom(String prenom) {
-        this.prenom = prenom;
+        this.prenom.set(prenom);
+    }
+
+    public StringProperty prenomProperty() {
+        return prenom;
     }
 }

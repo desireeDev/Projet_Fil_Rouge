@@ -1,43 +1,31 @@
 package com.example.bibliotheque.Model;
 
-import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
-//Classe Livre
-@XmlRootElement(name = "Livre")
-@XmlType(propOrder = {"id", "titre", "auteur", "presentation", "parution", "colonne", "rangee"})
+@XmlRootElement(name = "livre")
 public class Livre {
-    private long id;
-    private String titre;
-    private Auteur auteur;  // Cle etrangére dans la table Livre
-    private String presentation;
-    private short parution;
-    private short colonne;
-    private byte rangee;
 
-    // Getter et Setter pour id
-    @XmlElement
-    public long getId() {
-        return id;
-    }
+    private final SimpleStringProperty titre = new SimpleStringProperty();
+    private final SimpleStringProperty presentation = new SimpleStringProperty();
+    private final SimpleIntegerProperty parution = new SimpleIntegerProperty();
+    private final SimpleIntegerProperty colonne = new SimpleIntegerProperty();
+    private final SimpleIntegerProperty rangee = new SimpleIntegerProperty();
+    private final SimpleStringProperty pathImage = new SimpleStringProperty();
+    private Auteur auteur;
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    // Getter et Setter pour titre
-    @XmlElement
+    @XmlElement(name = "titre")
     public String getTitre() {
-        return titre;
+        return titre.get();
     }
 
     public void setTitre(String titre) {
-        this.titre = titre;
+        this.titre.set(titre);
     }
 
-    // Getter et Setter pour auteur
-    @XmlElement
+    @XmlElement(name = "auteur")
     public Auteur getAuteur() {
         return auteur;
     }
@@ -46,43 +34,50 @@ public class Livre {
         this.auteur = auteur;
     }
 
-    // Getter et Setter pour presentation
-    @XmlElement
+    @XmlElement(name = "presentation")
     public String getPresentation() {
-        return presentation;
+        return presentation.get();
     }
 
     public void setPresentation(String presentation) {
-        this.presentation = presentation;
+        this.presentation.set(presentation);
     }
 
-    // Getter et Setter pour parution
-    @XmlElement
-    public short getParution() {
-        return parution;
+    @XmlElement(name = "parution")
+    public int getParution() {
+        return parution.get();
     }
 
-    public void setParution(short parution) {
-        this.parution = parution;
+    public void setParution(int parution) {
+        this.parution.set(parution);
     }
 
-    // Getter et Setter pour colonne
-    @XmlElement
-    public short getColonne() {
-        return colonne;
+    @XmlElement(name = "colonne")
+    public int getColonne() {
+        return colonne.get();
     }
 
-    public void setColonne(short colonne) {
-        this.colonne = colonne;
+    public void setColonne(int colonne) {
+        this.colonne.set(colonne);
     }
 
-    // Getter et Setter pour rangee
-    @XmlElement
-    public byte getRangee() {
-        return rangee;
+    @XmlElement(name = "rangee")
+    public int getRangee() {
+        return rangee.get();
     }
 
-    public void setRangee(byte rangee) {
-        this.rangee = rangee;
+    public void setRangee(int rangee) {
+        this.rangee.set(rangee);
     }
+    @XmlElement(name = "pathImage")
+    public String getPathImage() {
+        return pathImage.get();
+    }
+
+    public void setPathImage(String pathImage) {
+        this.pathImage.set(pathImage);
+    }
+
+
 }
+

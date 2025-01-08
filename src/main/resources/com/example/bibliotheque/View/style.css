@@ -1,3 +1,4 @@
+/*
 
 .menu-bar {
     -fx-background-color: #154c79;
@@ -9,5 +10,35 @@
 }
 
 .menu-item:hover {
-    -fx-background-color: #ADD8E6; /* Couleur au survol des items */
+    -fx-background-color: #ADD8E6; */
+/* Couleur au survol des items *//*
+
+}
+*/
+/* style.css */
+.root {
+    -fx-font-family: "Arial";
+    -fx-padding: 20;
+    -fx-spacing: 10;
+}
+
+/* Bouton bleu */
+.button {
+    -fx-background-color: #154c79;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+/* Bouton : effet hover */
+.button:hover {
+    -fx-background-color: #1976D2;
+}
+
+/* Titres des champs en gras */
+.label {
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
 }

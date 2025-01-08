@@ -1,6 +1,7 @@
 package utils;
 
 import javax.xml.XMLConstants;
+import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
@@ -17,12 +18,13 @@ public class FileValidator {
     /**
      * Méthode pour valider le fichier XML avec le fichier XSD
      */
-    public static boolean validerXML() {
+    public static boolean validerFile() {
         try {
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             Schema schema = factory.newSchema(new File(MyFileXSD));
+            //Validator classe appellé pour favoriser la validation//bahaha
             Validator validator = schema.newValidator();
-            validator.validate(new javax.xml.transform.stream.StreamSource(new File(MyFile)));
+            validator.validate(new StreamSource(new File(MyFile)));
             System.out.println("Good Le fichier XML est valide !");
             return true;
         } catch (SAXException | IOException e) {
@@ -35,7 +37,7 @@ public class FileValidator {
      * Méthode principale pour exécuter la validation
      */
     public static void main(String[] args) {
-        boolean estValide = validerXML();
+        boolean estValide = validerFile();
         if (estValide) {
             System.out.println("Hola Le fichier XML est conforme !");
         } else {
