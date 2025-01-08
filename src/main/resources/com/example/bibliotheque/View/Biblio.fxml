@@ -5,13 +5,12 @@
       spacing="15" stylesheets="@style.css">
 
     <!-- Titre du formulaire -->
-    <Label text="Formulaire d'Ajout de livres" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+    <Label text="Formulaire d'Ajout de livres" style="-fx-font-size: 22px; -fx-font-weight: bold;-fx-text-fill: #154c79" />
 
     <!-- Formulaire -->
     <GridPane hgap="10" vgap="10">
         <Label text="Titre :" GridPane.rowIndex="0" GridPane.columnIndex="0" />
         <TextField fx:id="titreField" GridPane.rowIndex="0" GridPane.columnIndex="1" />
-
         <Label text="Nom de l'auteur :" GridPane.rowIndex="1" GridPane.columnIndex="0" />
         <TextField fx:id="nomField" GridPane.rowIndex="1" GridPane.columnIndex="1" />
 
@@ -20,8 +19,7 @@
 
         <Label text="Présentation :" GridPane.rowIndex="3" GridPane.columnIndex="0" />
         <TextField fx:id="presentationField" GridPane.rowIndex="3" GridPane.columnIndex="1" />
-
-        <Label text="Parution (année) :" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+        <Label text="Date de parution :" GridPane.rowIndex="4" GridPane.columnIndex="0" />
         <TextField fx:id="parutionField" GridPane.rowIndex="4" GridPane.columnIndex="1" />
 
         <Label text="Path Image (URL) :" GridPane.rowIndex="7" GridPane.columnIndex="0" />
@@ -33,15 +31,13 @@
         <TextField fx:id="rangeeField" GridPane.rowIndex="6" GridPane.columnIndex="1" />
 
         <!-- Bouton Ajouter avec du style -->
-        <Button text="Ajouter Livre" onAction="#ajouterLivre" GridPane.rowIndex="8" GridPane.columnIndex="1"
+        <Button text="Ajouter" onAction="#ajouterLivre" GridPane.rowIndex="8" GridPane.columnIndex="1"
                 styleClass="submit-button"/>
     </GridPane>
-
     <!-- Message d'erreur -->
     <Label fx:id="errorLabel" style="-fx-text-fill: red;" />
-
     <!-- Tableau d'affichage des livres -->
-    <TableView fx:id="tableView" style="-fx-border-color: #1976D2; -fx-border-radius: 10px;">
+    <TableView fx:id="tableView" style="-fx-border-color: #154c79; -fx-border-radius: 10px;">
         <columns>
             <TableColumn fx:id="titreColumn" text="Titre" />
             <TableColumn fx:id="auteurColumn" text="Auteur" />
@@ -50,7 +46,7 @@
             <TableColumn fx:id="pathImageColumn" text="Path Image" />
             <TableColumn fx:id="colonneColumn" text="Colonne" />
             <TableColumn fx:id="rangeeColumn" text="Rangée" />
-
+            <TableColumn text="Actions" />
         </columns>
     </TableView>
 </VBox>

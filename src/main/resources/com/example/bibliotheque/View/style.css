@@ -36,9 +36,18 @@
 .button:hover {
     -fx-background-color: #1976D2;
 }
-
-/* Titres des champs en gras */
 .label {
     -fx-font-weight: bold;
     -fx-font-size: 14px;
+}
+.table-view .column-header {
+    -fx-background-color: #abdbe3;
+
+    -fx-font-weight: bold;
+}
+.table-view {
+    -fx-pref-width: 300px;
+}
+.table-column {
+    -fx-pref-width: 155px;
 }
