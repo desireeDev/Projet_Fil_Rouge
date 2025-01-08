@@ -1,0 +1,22 @@
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bibliotheque.Controller.HomeController"
+            stylesheets="@style.css">
+
+    &lt;!&ndash; Image de fond et titre &ndash;&gt;
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <ImageView fitHeight="400" fitWidth="600">
+                <Image url="/images/MaBiblio.png"/>
+            </ImageView>
+            <Label text="Gestion de ma Bibliothèque" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #154c79;"/>
+            <Button text="Ouvrir la Bibliothèque" onAction="#ouvrirBibliotheque" styleClass="submit-button" />
+        </VBox>
+    </center>
+</BorderPane>
+-->

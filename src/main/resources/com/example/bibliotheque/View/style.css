@@ -51,3 +51,29 @@
 .table-column {
     -fx-pref-width: 155px;
 }
+.menu-bar {
+    -fx-background-color: #154c79;
+    -fx-text-fill: white;
+}
+
+/*
+//Style pour le Home
+*/
+/* Style pour le bouton *//*
+
+.submit-button {
+    -fx-background-color: #1976D2;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px 20px;
+}
+
+*/
+/* Style global *//*
+
+.label {
+    -fx-font-family: "Arial";
+}
+*/

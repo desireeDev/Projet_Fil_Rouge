@@ -132,7 +132,10 @@ public class BibliothequeController {
         }
     }
     @FXML
-    public void deleteLivre(){}
+    public void deleteLivre(){
+
+
+    }
 
     @FXML
     public void updateLivre(){}

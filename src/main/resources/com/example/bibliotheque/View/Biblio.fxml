@@ -4,6 +4,8 @@
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bibliotheque.Controller.BibliothequeController"
       spacing="15" stylesheets="@style.css">
 
+    <!-- Inclusion du menu -->
+    <fx:include source="menu.fxml"/>
     <!-- Titre du formulaire -->
     <Label text="Formulaire d'Ajout de livres" style="-fx-font-size: 22px; -fx-font-weight: bold;-fx-text-fill: #154c79" />
 

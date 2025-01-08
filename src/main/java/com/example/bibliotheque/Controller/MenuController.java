@@ -15,7 +15,7 @@ public class MenuController {
     @FXML
     private void handleLeft() {
         // Code pour gérer l'action "Quitter"
-        System.out.println("Quitter clicked!");
+        System.out.println("Bye Bye!");
         // Ferme l'application
         System.exit(0);
     }
