@@ -11,8 +11,8 @@ import java.io.IOException;
 public class FileValidator {
 
     // Définition directe des fichiers dans resources
-    private static final String FICHIER_XML = "src/main/resources/Biblio.xml";
-    private static final String FICHIER_XSD = "src/main/resources/Biblio.xsd";
+    private static final String MyFile = "src/main/resources/Biblio.xml";
+    private static final String MyFileXSD = "src/main/resources/Biblio.xsd";
 
     /**
      * Méthode pour valider le fichier XML avec le fichier XSD
@@ -20,9 +20,9 @@ public class FileValidator {
     public static boolean validerXML() {
         try {
             SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-            Schema schema = factory.newSchema(new File(FICHIER_XSD));
+            Schema schema = factory.newSchema(new File(MyFileXSD));
             Validator validator = schema.newValidator();
-            validator.validate(new javax.xml.transform.stream.StreamSource(new File(FICHIER_XML)));
+            validator.validate(new javax.xml.transform.stream.StreamSource(new File(MyFile)));
             System.out.println("Good Le fichier XML est valide !");
             return true;
         } catch (SAXException | IOException e) {
