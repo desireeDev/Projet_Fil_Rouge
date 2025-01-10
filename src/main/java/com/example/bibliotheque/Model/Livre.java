@@ -16,6 +16,8 @@ public class Livre {
     private final SimpleStringProperty pathImage = new SimpleStringProperty();
     private Auteur auteur;
 
+
+
     @XmlElement(name = "titre")
     public String getTitre() {
         return titre.get();

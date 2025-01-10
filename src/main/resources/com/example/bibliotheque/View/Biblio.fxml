@@ -15,10 +15,8 @@
         <TextField fx:id="titreField" GridPane.rowIndex="0" GridPane.columnIndex="1" />
         <Label text="Nom de l'auteur :" GridPane.rowIndex="1" GridPane.columnIndex="0" />
         <TextField fx:id="nomField" GridPane.rowIndex="1" GridPane.columnIndex="1" />
-
         <Label text="Prénom de l'auteur :" GridPane.rowIndex="2" GridPane.columnIndex="0" />
         <TextField fx:id="prenomField" GridPane.rowIndex="2" GridPane.columnIndex="1" />
-
         <Label text="Présentation :" GridPane.rowIndex="3" GridPane.columnIndex="0" />
         <TextField fx:id="presentationField" GridPane.rowIndex="3" GridPane.columnIndex="1" />
         <Label text="Date de parution :" GridPane.rowIndex="4" GridPane.columnIndex="0" />
@@ -41,14 +39,15 @@
     <!-- Tableau d'affichage des livres -->
     <TableView fx:id="tableView" style="-fx-border-color: #154c79; -fx-border-radius: 10px;">
         <columns>
-            <TableColumn fx:id="titreColumn" text="Titre" />
-            <TableColumn fx:id="auteurColumn" text="Auteur" />
+            <TableColumn fx:id="titleColumn" text="Titre" />
+            <TableColumn fx:id="authorColumn" text="Auteur" />
             <TableColumn fx:id="presentationColumn" text="Présentation" />
             <TableColumn fx:id="parutionColumn" text="Parution" />
             <TableColumn fx:id="pathImageColumn" text="Path Image" />
             <TableColumn fx:id="colonneColumn" text="Colonne" />
             <TableColumn fx:id="rangeeColumn" text="Rangée" />
-            <TableColumn text="Actions" />
+            <TableColumn text="Actions"
+            />
         </columns>
     </TableView>
 </VBox>

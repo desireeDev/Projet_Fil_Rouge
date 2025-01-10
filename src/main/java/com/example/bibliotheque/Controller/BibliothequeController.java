@@ -15,10 +15,10 @@ import java.io.File;
 import java.time.LocalDate;
 
 public class BibliothequeController {
-
+//Define the tableColumns
     @FXML private TableView<Livre> tableView;
-    @FXML private TableColumn<Livre, String> titreColumn;
-    @FXML private TableColumn<Livre, String> auteurColumn;
+    @FXML private TableColumn<Livre, String> titleColumn;
+    @FXML private TableColumn<Livre, String> authorColumn;
     @FXML private TableColumn<Livre, String> presentationColumn;
     @FXML private TableColumn<Livre, Integer> parutionColumn;
     @FXML private TableColumn<Livre, Integer> colonneColumn;
@@ -42,6 +42,7 @@ public class BibliothequeController {
     public BibliothequeController() {
         try {
             JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
+            //Code pour désérialiser le fichier XML
             bibliotheque = (Bibliotheque) context.createUnmarshaller().unmarshal(new File("src/main/resources/Biblio.xml"));
         } catch (JAXBException e) {
             bibliotheque = new Bibliotheque();
@@ -50,8 +51,8 @@ public class BibliothequeController {
 
     @FXML
     public void initialize() {
-        titreColumn.setCellValueFactory(new PropertyValueFactory<>("titre"));
-        auteurColumn.setCellValueFactory(cellData -> {
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("titre"));
+        authorColumn.setCellValueFactory(cellData -> {
             Auteur auteur = cellData.getValue().getAuteur();
             return new javafx.beans.property.SimpleStringProperty(auteur.getNom() + " " + auteur.getPrenom());
         });
@@ -68,7 +69,6 @@ public class BibliothequeController {
     @FXML
     public void ajouterLivre() {
         errorLabel.setText("");
-
         // ✅ Validation des champs vides
         if (titreField.getText().trim().isEmpty() || nomField.getText().trim().isEmpty() ||
                 prenomField.getText().trim().isEmpty() || presentationField.getText().trim().isEmpty() ||
@@ -83,7 +83,7 @@ public class BibliothequeController {
             int colonne = Integer.parseInt(colonneField.getText().trim());
             int rangee = Integer.parseInt(rangeeField.getText().trim());
 
-            // ✅ Contrainte : Date de parution ne doit pas dépasser l'année actuelle
+            //Contrainte : Date de parution ne doit pas dépasser l'année actuelle
             if (parution > LocalDate.now().getYear()) {
                 errorLabel.setText(" La date de parution ne peut pas dépasser l'année actuelle.");
                 return;
@@ -104,7 +104,6 @@ public class BibliothequeController {
                     return;
                 }
             }
-
             //Ajout du livre avec toutes les contraintes respectées
             Livre livre = new Livre();
             //Update du titre
@@ -133,6 +132,8 @@ public class BibliothequeController {
     }
     @FXML
     public void deleteLivre(){
+        Livre livretoDelete= new Livre();
+      //  if(bibliotheque(livretodelelete))
 
 
     }

@@ -16,7 +16,7 @@ public class HomeController {
     private void ouvrirBibliotheque() {
         try {
             // Charger le fichier Bibliotheque.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bibliotheque/View/Bibliotheque.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bibliotheque/View/Biblio.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène pour afficher la bibliothèque
