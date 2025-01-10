@@ -130,6 +130,7 @@ public class BibliothequeController {
             errorLabel.setText(" Veuillez entrer des valeurs numériques valides svp.");
         }
     }
+    //Conception de la fonction deleteLivre
     @FXML
     public void deleteLivre(){
         Livre livretoDelete= new Livre();
