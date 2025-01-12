@@ -46,7 +46,7 @@
     -fx-font-weight: bold;
 }
 .table-view {
-    -fx-pref-width: 300px;
+    -fx-pref-width: 380px;
 }
 .table-column {
     -fx-pref-width: 155px;

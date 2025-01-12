@@ -46,8 +46,8 @@
             <TableColumn fx:id="pathImageColumn" text="Path Image" />
             <TableColumn fx:id="colonneColumn" text="Colonne" />
             <TableColumn fx:id="rangeeColumn" text="Rangée" />
-            <TableColumn text="Actions"
-            />
+            <TableColumn fx:id="actionsColumn" text="Actions" />
+
         </columns>
     </TableView>
 </VBox>
