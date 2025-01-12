@@ -14,7 +14,7 @@
                 </image>
             </ImageView>
             <Label text="Gestion de ma Bibliothèque" style="-fx-font-size: 43px; -fx-font-weight: bold; -fx-text-fill: #e5a191;"/>
-            <Button text="Ouvrir la Bibliothèque" onAction="#ouvrirBibliotheque" style="-fx-background-color: #92236f; -fx-text-fill: white; -fx-font-size: 18px;" />
+            <Button text="Ouvrir la Bibliothèque" onAction="#openBiblio" style="-fx-background-color: #92236f; -fx-text-fill: white; -fx-font-size: 18px;" />
         </VBox>
     </center>
 </BorderPane>

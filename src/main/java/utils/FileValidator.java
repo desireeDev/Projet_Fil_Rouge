@@ -10,8 +10,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class FileValidator {
-
-    // Définition directe des fichiers dans resources
+    // Définition directe des fichiers to use  dans resources
     private static final String MyFile = "src/main/resources/Biblio.xml";
     private static final String MyFileXSD = "src/main/resources/Biblio.xsd";
 

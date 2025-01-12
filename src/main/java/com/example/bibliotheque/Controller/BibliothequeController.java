@@ -10,7 +10,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import javafx.scene.layout.HBox;
-
 import java.io.File;
 import java.time.LocalDate;
 public class BibliothequeController {
@@ -300,5 +299,6 @@ public BibliothequeController() {
         pathImageField.setText(livretoUpdate.getPathImage());
     }
 
+//**Fonction pour la sauvegarde des données dans le fichier XML"
 
 }

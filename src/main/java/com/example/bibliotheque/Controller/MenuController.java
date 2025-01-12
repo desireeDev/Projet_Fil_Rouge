@@ -3,9 +3,7 @@ package com.example.bibliotheque.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-
 public class MenuController {
-
     @FXML
     private void handleOpen() {
         // Code pour gérer l'action "Ouvrir"
