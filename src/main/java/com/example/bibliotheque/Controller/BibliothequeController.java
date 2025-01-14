@@ -241,13 +241,8 @@ public class BibliothequeController {
     //****Conception de la fonction UpdateLivree***//
     @FXML
     public void updateLivre() {
-        // Récupérer l'élément sélectionné dans notreTableView
         Livre livreaModifier = tableView.getSelectionModel().getSelectedItem();
-
-        // Vérifier si un livre est bien sélectionné
         if (livreaModifier != null) {
-
-            // ✅ Validation des champs pour s'assurer qu'ils ne sont pas vides
             if (titreField.getText().trim().isEmpty() ||
                     nomField.getText().trim().isEmpty() ||
                     prenomField.getText().trim().isEmpty() ||
@@ -257,41 +252,34 @@ public class BibliothequeController {
                     rangeeField.getText().trim().isEmpty() ||
                     pathImageField.getText().trim().isEmpty()) {
                 System.out.println("Tous les champs doivent être remplis !");
-                return; // Arrêter la méthode si un champ est vide
+                return;
             }
-            //  Modification des propriétés du livre sélectionné avec les valeurs saisies
-            livreaModifier.setTitre(titreField.getText());
-            livreaModifier.getAuteur().setNom(nomField.getText());
-            livreaModifier.getAuteur().setPrenom(prenomField.getText());
-            livreaModifier.setPathImage(pathImageField.getText());
-            livreaModifier.setPresentation(presentationField.getText());
-            livreaModifier.setParution(Integer.parseInt(parutionField.getText()));
-
-            // Conversion et validation des valeurs numériques pour Colonne et Rangée
             try {
-                int colonne = Integer.parseInt(colonneField.getText().trim());
-                int rangee = Integer.parseInt(rangeeField.getText().trim());
+                livreaModifier.setTitre(titreField.getText().trim());
+                livreaModifier.getAuteur().setNom(nomField.getText().trim());
+                livreaModifier.getAuteur().setPrenom(prenomField.getText().trim());
+                livreaModifier.setPresentation(presentationField.getText().trim());
+                livreaModifier.setPathImage(pathImageField.getText().trim());
+                livreaModifier.setParution(Integer.parseInt(parutionField.getText().trim()));
+                livreaModifier.setColonne(Integer.parseInt(colonneField.getText().trim()));
+                livreaModifier.setRangee(Integer.parseInt(rangeeField.getText().trim()));
 
-                // Contraintes : Colonne et Rangée doivent être entre 1 et 7
-                if (colonne < 1 || colonne > 7 || rangee < 1 || rangee > 7) {
-                    System.out.println("La colonne et la rangée doivent être entre 1 et 7.");
-                    return;
+                //  Met à jour l'objet dans bibliotheque
+                int index = bibliotheque.getLivres().indexOf(livreaModifier);
+                if (index >= 0) {
+                    bibliotheque.getLivres().set(index, livreaModifier);
                 }
-                livreaModifier.setColonne(colonne);
-                livreaModifier.setRangee(rangee);
-            } catch (NumberFormatException e) {
-                System.out.println("Veuillez entrer des valeurs numériques valides pour Colonne et Rangée.");
-                return; // Arrêter l'exécution en cas d'erreur de conversion
-            }
-            // Mise à jour de la table
-            tableView.refresh();
 
-            // En cas de bug
-            System.out.println("Tell me where is the error !");
+                // Rafraîchissement du TableView
+                tableView.refresh();
+            } catch (NumberFormatException e) {
+                System.out.println("Veuillez entrer des valeurs numériques valides.");
+            }
         } else {
-            System.out.println("Veuillez sélectionner un livre à modifier.");
+            System.out.println("Veuillez selectionner un livre à modifier.");
         }
     }
+
 
     //Fonction pour les boutons
     /**
@@ -370,6 +358,8 @@ public class BibliothequeController {
      * @param bibliotheque La bibliotheque a rajouter dans la TableView
      */
     private void ChargerBibliothequeAView(Bibliotheque bibliotheque) {
+        // Référence directe pour s'assurer que les objets sont bien liés
+        this.bibliotheque = bibliotheque;
         //Convertit la liste de livres existante (chargée depuis le fichier XML) en une liste observable pour que les modifications soient prises en compte par l'interface graphiqu
         livresObservable = FXCollections.observableArrayList(bibliotheque.getLivres());
         //Associe la listeObservale à notre tableView
