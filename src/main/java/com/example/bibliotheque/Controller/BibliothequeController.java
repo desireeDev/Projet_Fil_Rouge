@@ -2,18 +2,27 @@ package com.example.bibliotheque.Controller;
 import com.example.bibliotheque.Model.Bibliotheque;
 import com.example.bibliotheque.Model.Livre;
 import com.example.bibliotheque.Model.Auteur;
+import jakarta.xml.bind.Unmarshaller;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import javafx.scene.layout.HBox;
+
+import java.awt.*;
 import java.io.File;
 import java.time.LocalDate;
 public class BibliothequeController {
-//Define the tableColumns who contains the elements
+    //public MenuItem itemOuvrir;
+    //Define the tableColumns who contains the elements
     //FXML to lier les elements definis dans la vue au controleur java
     //Definition of tableau who shows les objets de type Livre
     @FXML private TableView<Livre> tableView;
@@ -26,7 +35,7 @@ public class BibliothequeController {
     @FXML private TableColumn<Livre, Integer> rangeeColumn;
     @FXML private TableColumn<Livre, String> pathImageColumn;
     @FXML private TableColumn<Livre, Void> actionsColumn; // Nouvelle colonne d'actio
-//TextField=Champs de saisie des attributs
+    //TextField=Champs de saisie des attributs
     @FXML private TextField titreField;
     @FXML private TextField nomField;
     @FXML private TextField prenomField;
@@ -37,36 +46,36 @@ public class BibliothequeController {
     @FXML private TextField pathImageField;
 
     @FXML private Label errorLabel;
-// Déclaration et initialisation d'une liste observable de type Livre.
+    // Déclaration et initialisation d'une liste observable de type Livre.
 // FXCollections.observableArrayList() crée une liste dynamique qui
 // surveille les modifications apportées à son contenu (ajouts, suppressions, modifications).
 // Cette liste sera  utilisée ici  pour alimenter la TableView et mettre à jour automatiquement notre interface user(View).
-private ObservableList<Livre> livresObservable = FXCollections.observableArrayList();
+    private ObservableList<Livre> livresObservable = FXCollections.observableArrayList();
 
-//Objet who contains la collection(ensemble) des livres
+    //Objet who contains la collection(ensemble) des livres
     private Bibliotheque bibliotheque;
-//Désérialisation du fichier XML
+    //Désérialisation du fichier XML
 // JAXB and Unmarshaller seront Utilisés pour lire notre  fichier XML et charger les données dans l'objet bibliotheque.
-public BibliothequeController() {
-    try {
-        JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
-        File fichierXML = new File("src/main/resources/Biblio.xml");
-        //createUnmarshaller cree un outil de conversion de XMl en java et unmarshal fait la conversion
-        if (fichierXML.exists()) {
-            bibliotheque = (Bibliotheque) context.createUnmarshaller().unmarshal(fichierXML);
-        } else {
-            bibliotheque = new Bibliotheque();
+    public BibliothequeController() {
+        try {
+            JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
+            File fichierXML = new File("src/main/resources/Biblio.xml");
+            //createUnmarshaller cree un outil de conversion de XMl en java et unmarshal fait la conversion
+            if (fichierXML.exists()) {
+                bibliotheque = (Bibliotheque) context.createUnmarshaller().unmarshal(fichierXML);
+            } else {
+                bibliotheque = new Bibliotheque();
+            }
+        } catch (JAXBException e) {
+            e.printStackTrace();
         }
-    } catch (JAXBException e) {
-        e.printStackTrace();
     }
-}
-//FXML pour faire la liason entre la vue et le controller
+    //FXML pour faire la liason entre la vue et le controller
     @FXML
     public void initialize() {
-    //Liaison des données
-    //sellCellValueFactory permet de lier chaque column à son attribut correspondant dans la table Livre
-    //PropertyValueFactory  lie la propriété de l'objet Livre  à une colonne du TableView.
+        //Liaison des données
+        //sellCellValueFactory permet de lier chaque column à son attribut correspondant dans la table Livre
+        //PropertyValueFactory  lie la propriété de l'objet Livre  à une colonne du TableView.
         titleColumn.setCellValueFactory(new PropertyValueFactory<Livre,String>("titre"));
         authorColumn.setCellValueFactory(cellData -> {
             Auteur auteur = cellData.getValue().getAuteur();
@@ -77,12 +86,69 @@ public BibliothequeController() {
         colonneColumn.setCellValueFactory(new PropertyValueFactory<>("colonne"));
         rangeeColumn.setCellValueFactory(new PropertyValueFactory<>("rangee"));
         pathImageColumn.setCellValueFactory(new PropertyValueFactory<>("pathImage"));
-//Convertit la liste de livres existante (chargée depuis le fichier XML) en une liste observable pour que les modifications soient prises en compte par l'interface graphiqu
-        livresObservable = FXCollections.observableArrayList(bibliotheque.getLivres());
-        //Associe la listeObservale à notre tableView
-        tableView.setItems(livresObservable);
+        ChargerBibliothequeAView(bibliotheque);
         // Ajouter la colonne d'actions avec les boutons
         ajouterBoutonsActions();
+    }
+    @FXML
+    public void handleOpen() throws JAXBException {
+        // Code pour gérer l'action "Ouvrir"
+        String filePath;
+        File xmlStream;
+        Bibliotheque b;
+        JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        FileDialog fd = new FileDialog((java.awt.Frame)null, "Choose a file", FileDialog.LOAD);
+        fd.setFile("*.xml");
+        fd.setVisible(true);
+        String filename = fd.getFile();
+        if (filename == null) {
+            System.out.println("You cancelled the choice");
+            return;
+        }
+        else
+            System.out.println("You chose " + fd.getDirectory() + filename);
+
+        filePath = fd.getDirectory() + fd.getFile();
+        xmlStream = new File(filePath);
+        b =  (Bibliotheque) unmarshaller.unmarshal(xmlStream);
+        ChargerBibliothequeAView(b);
+    }
+
+    @FXML
+    public void handleLeft() {
+        // Code pour gérer l'action "Quitter"
+        System.out.println("Bye Bye!");
+        // Ferme l'application
+        System.exit(0);
+    }
+
+    @FXML
+    public void handleSave() {
+        // Code pour gérer l'action "Sauvegarder"
+        System.out.println("Sauvegarder clicked!");
+    }
+    //Lien entre la vue et le controller
+    @FXML
+    public void handleSaveOn() {
+        // Code pour gérer l'action "Sauvegarder sous"
+        System.out.println("Sauvegarder sous!");
+    }
+
+    @FXML
+    public void handleInfos() {
+        // Code pour gérer l'action "Sauvegarder sous"
+        System.out.println("Voici les informations!");
+    }
+
+    @FXML
+    public void handleAbout() {
+        // Code pour afficher un message d'info dans le menu "About"
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("About");
+        alert.setHeaderText("Ma Bibliothèque");
+        alert.setContentText("Version 1.0");
+        alert.showAndWait();
     }
     @FXML
     //****Conception de la fonction addLivre***//
@@ -149,7 +215,7 @@ public BibliothequeController() {
 
             errorLabel.setText(" Ce livre a été bien ajoutée !");
         } catch (NumberFormatException e) {
-            errorLabel.setText(" Veuillez entrer des valeurs numériques valides svp.");
+            errorLabel.setText(" Veuillez entrer des valeurs  valides svp.");
         }
     }
     //****Conception de la fonction deleteLivre***//
@@ -297,6 +363,17 @@ public BibliothequeController() {
         colonneField.setText(String.valueOf(livretoUpdate.getColonne()));
         rangeeField.setText(String.valueOf(livretoUpdate.getRangee()));
         pathImageField.setText(livretoUpdate.getPathImage());
+    }
+
+    /**
+     *
+     * @param bibliotheque La bibliotheque a rajouter dans la TableView
+     */
+    private void ChargerBibliothequeAView(Bibliotheque bibliotheque) {
+        //Convertit la liste de livres existante (chargée depuis le fichier XML) en une liste observable pour que les modifications soient prises en compte par l'interface graphiqu
+        livresObservable = FXCollections.observableArrayList(bibliotheque.getLivres());
+        //Associe la listeObservale à notre tableView
+        tableView.setItems(livresObservable);
     }
 
 //**Fonction pour la sauvegarde des données dans le fichier XML"

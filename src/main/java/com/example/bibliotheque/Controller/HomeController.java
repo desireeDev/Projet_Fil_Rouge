@@ -19,6 +19,7 @@ public class HomeController {
             Stage stage = new Stage();
             stage.setTitle("Gestion de la Bibliothèque");
             stage.setScene(new Scene(root));
+            stage.setMaximized(true);
             stage.show();
 
         } catch (IOException e) {
