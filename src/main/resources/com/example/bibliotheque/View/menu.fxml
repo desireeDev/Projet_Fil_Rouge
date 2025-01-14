@@ -5,19 +5,25 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
+
+<BorderPane stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bibliotheque.Controller.MenuController">
+=======
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bibliotheque.Controller.MenuController"
             >
+
     <top>
         <MenuBar >
             <Menu text="Fichier">
-                <MenuItem text="Ouvrir" fx:id="itemOuvrir" onAction="#handleOuvrir"/>
-                <MenuItem text="Quitter" fx:id="itemQuitter" onAction="#handleQuitter"/>
+                <MenuItem text="Ouvrir" fx:id="itemOuvrir" onAction="#handleOpen"/>
+                <MenuItem text="Quitter" fx:id="itemQuitter" onAction="#handleLeft"/>
             </Menu>
             <Menu text="Edition">
-                <MenuItem text="Sauvegarder" fx:id="itemSauvegarder" onAction="#handleSauvegarder"/>
-                <MenuItem text="Sauvegarder sous" fx:id="itemSauvegarderSous" onAction="#handleSauvegarderSous"/>
+                <MenuItem text="Sauvegarder" fx:id="itemSauvegarder" onAction="#handleSave"/>
+                <MenuItem text="Sauvegarder sous" fx:id="itemSauvegarderSous" onAction="#handleSaveOn"/>
             </Menu>
-            <Menu text="About"/>
+            <Menu text="About">
+                <MenuItem text="Infos" fx:id="itemInfos" onAction="#handleInfos"/>
+        </Menu>
         </MenuBar>
     </top>
 </BorderPane>
