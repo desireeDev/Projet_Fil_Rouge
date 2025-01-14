@@ -11,6 +11,7 @@ module com.example.bibliotheque {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires jakarta.xml.bind;
+    requires java.desktop;
 
     opens com.example.bibliotheque to javafx.fxml;
     exports com.example.bibliotheque;
