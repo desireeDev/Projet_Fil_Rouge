@@ -74,4 +74,4 @@ public class MenuController {
         alert.setContentText("Version 1.0");
         alert.showAndWait();
 
-}
+}}

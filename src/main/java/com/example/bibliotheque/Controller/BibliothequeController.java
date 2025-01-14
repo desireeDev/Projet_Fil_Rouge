@@ -2,6 +2,7 @@ package com.example.bibliotheque.Controller;
 import com.example.bibliotheque.Model.Bibliotheque;
 import com.example.bibliotheque.Model.Livre;
 import com.example.bibliotheque.Model.Auteur;
+import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 
 import java.awt.*;
 import java.io.File;
@@ -46,7 +48,11 @@ public class BibliothequeController {
     @FXML private TextField pathImageField;
 
     @FXML private Label errorLabel;
-// Déclaration et initialisation d'une liste observable de type Livre.
+    @FXML private MenuItem saveMenuItem;
+
+    @FXML private MenuItem saveAsMenuItem;
+
+    // Déclaration et initialisation d'une liste observable de type Livre.
 // FXCollections.observableArrayList() crée une liste dynamique qui
 // surveille les modifications apportées à son contenu (ajouts, suppressions, modifications).
 // Cette liste sera  utilisée ici  pour alimenter la TableView et mettre à jour automatiquement notre interface user(View).
@@ -123,18 +129,62 @@ public BibliothequeController() {
         System.exit(0);
     }
 
+
+    //isaac
+    // Méthode pour sauvegarder dans un fichier XML
     @FXML
     public void handleSave() {
-        // Code pour gérer l'action "Sauvegarder"
-        System.out.println("Sauvegarder clicked!");
+        try {
+            // Crée un contexte JAXB pour la classe Bibliotheque
+            JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+            // Spécifie un fichier par défaut
+            File file = new File("bibliotheque.xml");
+            marshaller.marshal(bibliotheque, file);
+
+            // Confirmation
+            showAlert(Alert.AlertType.INFORMATION, "Sauvegarde réussie", "Les données ont été sauvegardées dans bibliotheque.xml.");
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de sauvegarde", "Impossible de sauvegarder les données : " + e.getMessage());
+        }
     }
-    //Lien entre la vue et le controller
+    // Méthode pour "Sauvegarder sous"
     @FXML
-    public void handleSaveOn() {
-        // Code pour gérer l'action "Sauvegarder sous"
-        System.out.println("Sauvegarder sous!");
+    public void handleSaveAs() {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Sauvegarder sous");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichiers XML", "*.xml"));
+            // Ouvre une boîte de dialogue pour choisir un fichier
+            File file = fileChooser.showSaveDialog(null);
+
+            if (file != null) {
+                JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
+                Marshaller marshaller = context.createMarshaller();
+                marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+                marshaller.marshal(bibliotheque, file);
+
+                // Confirmation
+                showAlert(Alert.AlertType.INFORMATION, "Sauvegarde réussie", "Les données ont été sauvegardées dans " + file.getAbsolutePath());
+            }
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Erreur de sauvegarde", "Impossible de sauvegarder les données : " + e.getMessage());
+        }
     }
 
+    // Méthode utilitaire pour afficher des messages à l'utilisateur
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    //isaac
     @FXML
     public void handleInfos() {
         // Code pour gérer l'action "Sauvegarder sous"
@@ -208,7 +258,6 @@ public BibliothequeController() {
             livre.setPathImage(pathImageField.getText().trim());
 //Ajout du livre dans la biblio
             bibliotheque.addLivre(livre);
-
             livresObservable.add(livre);
             //Mise à jour de la table
             tableView.refresh();
@@ -246,7 +295,6 @@ public BibliothequeController() {
 
         // Vérifier si un livre est bien sélectionné
         if (livreaModifier != null) {
-
             // ✅ Validation des champs pour s'assurer qu'ils ne sont pas vides
             if (titreField.getText().trim().isEmpty() ||
                     nomField.getText().trim().isEmpty() ||
@@ -285,7 +333,7 @@ public BibliothequeController() {
             }
             // Mise à jour de la table
             tableView.refresh();
-
+            handleSave();
             // En cas de bug
             System.out.println("Tell me where is the error !");
         } else {
