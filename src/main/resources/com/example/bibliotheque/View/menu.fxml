@@ -5,9 +5,14 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
+
 <BorderPane stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bibliotheque.Controller.MenuController">
+=======
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bibliotheque.Controller.MenuController"
+            >
+
     <top>
-        <MenuBar>
+        <MenuBar >
             <Menu text="Fichier">
                 <MenuItem text="Ouvrir" fx:id="itemOuvrir" onAction="#handleOpen"/>
                 <MenuItem text="Quitter" fx:id="itemQuitter" onAction="#handleLeft"/>
