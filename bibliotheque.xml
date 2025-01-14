@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bibliotheque>
+    <livre>
+        <auteur>
+            <nom>Dupond</nom>
+            <prenom>Jean</prenom>
+        </auteur>
+        <colonne>5</colonne>
+        <parution>2000</parution>
+        <presentation>Ce livre est une introduction au schema XSD</presentation>
+        <rangee>2</rangee>
+        <titre>XSD pour les nuls</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <nom>Rowling</nom>
+            <prenom>JK</prenom>
+        </auteur>
+        <colonne>5</colonne>
+        <parution>1996</parution>
+        <presentation>Ce livre est une introduction au schema XSD</presentation>
+        <rangee>2</rangee>
+        <titre>HarryPotter</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <nom>Paolini</nom>
+            <prenom>Christopher</prenom>
+        </auteur>
+        <colonne>5</colonne>
+        <parution>2001</parution>
+        <presentation>Ce livre est une introduction au schema XSD</presentation>
+        <rangee>2</rangee>
+        <titre>Eragon</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <nom>Nyarko</nom>
+            <prenom>Marie-Stella</prenom>
+        </auteur>
+        <colonne>5</colonne>
+        <parution>2023</parution>
+        <pathImage>GGGGGGGGGGGGGGGGGGGGGGGGGGGGG</pathImage>
+        <presentation>un bon livre</presentation>
+        <rangee>4</rangee>
+        <titre>L'amourr</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <nom>Diarra</nom>
+            <prenom>Yasmine</prenom>
+        </auteur>
+        <colonne>2</colonne>
+        <parution>2003</parution>
+        <pathImage>GGGGGGGGGGGGGGGGGGGGGGGGGGGGG</pathImage>
+        <presentation>un bon livre</presentation>
+        <rangee>3</rangee>
+        <titre>L'amourr</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <nom>Comin</nom>
+            <prenom>Leo</prenom>
+        </auteur>
+        <colonne>2</colonne>
+        <parution>2004</parution>
+        <pathImage>HHHHHHHHHHHHHHHHHHHHHHHHH</pathImage>
+        <presentation>un bon livret</presentation>
+        <rangee>5</rangee>
+        <titre>L'amourrrr</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <nom>De gaston</nom>
+            <prenom>Isaac</prenom>
+        </auteur>
+        <colonne>3</colonne>
+        <parution>2007</parution>
+        <pathImage>HHHHHHHHHHHHHHHHHHHHHHHHH</pathImage>
+        <presentation>un bon livrett</presentation>
+        <rangee>7</rangee>
+        <titre>L'amourrrrrrr</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <nom>Trouky</nom>
+            <prenom>Asma</prenom>
+        </auteur>
+        <colonne>3</colonne>
+        <parution>2023</parution>
+        <pathImage>0000000</pathImage>
+        <presentation>la belle</presentation>
+        <rangee>6</rangee>
+        <titre>L'amourrrrrrr</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <nom>Rowling</nom>
+            <prenom>JK</prenom>
+        </auteur>
+        <colonne>5</colonne>
+        <parution>2024</parution>
+        <pathImage>JJ</pathImage>
+        <presentation>Ce livre est une introduction au schema XSD</presentation>
+        <rangee>2</rangee>
+        <titre>HarryPotter</titre>
+    </livre>
+</bibliotheque>

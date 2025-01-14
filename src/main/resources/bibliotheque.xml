@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bibliotheque>
+    <livre>
+        <auteur>
+            <nom>Dupond</nom>
+            <prenom>Jean</prenom>
+        </auteur>
+        <colonne>5</colonne>
+        <parution>2000</parution>
+        <presentation>Ce livre est une introduction au schema XSD</presentation>
+        <rangee>2</rangee>
+        <titre>XSD pour les nuls</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <nom>Rowling</nom>
+            <prenom>JK</prenom>
+        </auteur>
+        <colonne>5</colonne>
+        <parution>1996</parution>
+        <presentation>Ce livre est une introduction au schema XSD</presentation>
+        <rangee>2</rangee>
+        <titre>HarryPotter</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <nom>Paolini</nom>
+            <prenom>Christopher</prenom>
+        </auteur>
+        <colonne>5</colonne>
+        <parution>2001</parution>
+        <presentation>Ce livre est une introduction au schema XSD</presentation>
+        <rangee>2</rangee>
+        <titre>Eragon</titre>
+    </livre>
+</bibliotheque>

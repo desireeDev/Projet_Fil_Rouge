@@ -7,7 +7,6 @@ import javafx.beans.property.SimpleStringProperty;
 
 @XmlRootElement(name = "livre")
 public class Livre {
-
     private final SimpleStringProperty titre = new SimpleStringProperty();
     private final SimpleStringProperty presentation = new SimpleStringProperty();
     private final SimpleIntegerProperty parution = new SimpleIntegerProperty();
@@ -15,9 +14,6 @@ public class Livre {
     private final SimpleIntegerProperty rangee = new SimpleIntegerProperty();
     private final SimpleStringProperty pathImage = new SimpleStringProperty();
     private Auteur auteur;
-
-
-
     @XmlElement(name = "titre")
     public String getTitre() {
         return titre.get();
