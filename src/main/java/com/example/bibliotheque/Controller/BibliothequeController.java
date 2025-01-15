@@ -52,20 +52,22 @@ public class BibliothequeController {
 
     @FXML private MenuItem saveAsMenuItem;
 
-    // Déclaration et initialisation d'une liste observable de type Livre.
-// FXCollections.observableArrayList() crée une liste dynamique qui
-// surveille les modifications apportées à son contenu (ajouts, suppressions, modifications).
-// Cette liste sera  utilisée ici  pour alimenter la TableView et mettre à jour automatiquement notre interface user(View).
-private ObservableList<Livre> livresObservable = FXCollections.observableArrayList();
+    private String xmlFilePath = "src/main/resources/Biblio.xml";
 
-//Objet who contains la collection(ensemble) des livres
+    // Déclaration et initialisation d'une liste observable de type Livre.
+    // FXCollections.observableArrayList() crée une liste dynamique qui
+    // surveille les modifications apportées à son contenu (ajouts, suppressions, modifications).
+    // Cette liste sera  utilisée ici  pour alimenter la TableView et mettre à jour automatiquement notre interface user(View).
+    private ObservableList<Livre> livresObservable = FXCollections.observableArrayList();
+
+    //Objet who contains la collection(ensemble) des livres
     private Bibliotheque bibliotheque;
-//Désérialisation du fichier XML
-// JAXB and Unmarshaller seront Utilisés pour lire notre  fichier XML et charger les données dans l'objet bibliotheque.
+    //Désérialisation du fichier XML
+    // JAXB and Unmarshaller seront Utilisés pour lire notre  fichier XML et charger les données dans l'objet bibliotheque.
 public BibliothequeController() {
     try {
         JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
-        File fichierXML = new File("src/main/resources/Biblio.xml");
+        File fichierXML = new File(xmlFilePath);
         //createUnmarshaller cree un outil de conversion de XMl en java et unmarshal fait la conversion
         if (fichierXML.exists()) {
             bibliotheque = (Bibliotheque) context.createUnmarshaller().unmarshal(fichierXML);
@@ -99,7 +101,6 @@ public BibliothequeController() {
     @FXML
     public void handleOpen() throws JAXBException {
         // Code pour gérer l'action "Ouvrir"
-        String filePath;
         File xmlStream;
         Bibliotheque b;
         JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
@@ -115,8 +116,8 @@ public BibliothequeController() {
         else
             System.out.println("You chose " + fd.getDirectory() + filename);
 
-        filePath = fd.getDirectory() + fd.getFile();
-        xmlStream = new File(filePath);
+        xmlFilePath = fd.getDirectory() + fd.getFile();
+        xmlStream = new File(xmlFilePath);
         b =  (Bibliotheque) unmarshaller.unmarshal(xmlStream);
         ChargerBibliothequeAView(b);
     }
@@ -141,11 +142,11 @@ public BibliothequeController() {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             // Spécifie un fichier par défaut
-            File file = new File("bibliotheque.xml");
+            File file = new File(xmlFilePath);
             marshaller.marshal(bibliotheque, file);
 
             // Confirmation
-            showAlert(Alert.AlertType.INFORMATION, "Sauvegarde réussie", "Les données ont été sauvegardées dans bibliotheque.xml.");
+            showAlert(Alert.AlertType.INFORMATION, "Sauvegarde réussie", "Les données ont été sauvegardées dans " + xmlFilePath);
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Erreur de sauvegarde", "Impossible de sauvegarder les données : " + e.getMessage());
         }
@@ -161,6 +162,8 @@ public BibliothequeController() {
             File file = fileChooser.showSaveDialog(null);
 
             if (file != null) {
+                xmlFilePath =  file.getAbsolutePath();
+                System.out.println("xmlFilePath : " + xmlFilePath);
                 JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
                 Marshaller marshaller = context.createMarshaller();
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -168,7 +171,7 @@ public BibliothequeController() {
                 marshaller.marshal(bibliotheque, file);
 
                 // Confirmation
-                showAlert(Alert.AlertType.INFORMATION, "Sauvegarde réussie", "Les données ont été sauvegardées dans " + file.getAbsolutePath());
+                showAlert(Alert.AlertType.INFORMATION, "Sauvegarde réussie", "Les données ont été sauvegardées dans " + xmlFilePath);
             }
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Erreur de sauvegarde", "Impossible de sauvegarder les données : " + e.getMessage());
