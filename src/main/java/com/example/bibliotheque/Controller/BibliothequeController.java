@@ -4,10 +4,12 @@ import com.example.bibliotheque.Model.Livre;
 import com.example.bibliotheque.Model.Auteur;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,9 +20,11 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
-
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 public class BibliothequeController {
     //public MenuItem itemOuvrir;
@@ -28,6 +32,10 @@ public class BibliothequeController {
     //FXML to lier les elements definis dans la vue au controleur java
     //Definition of tableau who shows les objets de type Livre
     @FXML private TableView<Livre> tableView;
+//Getter pour la récupération vu que tableView est déclaré private
+    public TableView<Livre> getTableView() {
+        return tableView;
+    }
     //Define the column of tableView
     @FXML private TableColumn<Livre, String> titleColumn;
     @FXML private TableColumn<Livre, String> authorColumn;
@@ -51,7 +59,6 @@ public class BibliothequeController {
     @FXML private MenuItem saveMenuItem;
 
     @FXML private MenuItem saveAsMenuItem;
-
     // Déclaration et initialisation d'une liste observable de type Livre.
 // FXCollections.observableArrayList() crée une liste dynamique qui
 // surveille les modifications apportées à son contenu (ajouts, suppressions, modifications).
@@ -190,7 +197,6 @@ public BibliothequeController() {
         // Code pour gérer l'action "Sauvegarder sous"
         System.out.println("Voici les informations!");
     }
-
     @FXML
     public void handleAbout() {
         // Code pour afficher un message d'info dans le menu "About"
@@ -287,60 +293,6 @@ public BibliothequeController() {
             System.out.println("Pas de livre à supprimer d'accordr ?OK.");
         }
     }
-    //****Conception de la fonction UpdateLivree***//
-    @FXML
-    public void updateLivre() {
-        // Récupérer l'élément sélectionné dans notreTableView
-        Livre livreaModifier = tableView.getSelectionModel().getSelectedItem();
-
-        // Vérifier si un livre est bien sélectionné
-        if (livreaModifier != null) {
-            // ✅ Validation des champs pour s'assurer qu'ils ne sont pas vides
-            if (titreField.getText().trim().isEmpty() ||
-                    nomField.getText().trim().isEmpty() ||
-                    prenomField.getText().trim().isEmpty() ||
-                    presentationField.getText().trim().isEmpty() ||
-                    parutionField.getText().trim().isEmpty() ||
-                    colonneField.getText().trim().isEmpty() ||
-                    rangeeField.getText().trim().isEmpty() ||
-                    pathImageField.getText().trim().isEmpty()) {
-                System.out.println("Tous les champs doivent être remplis !");
-                return; // Arrêter la méthode si un champ est vide
-            }
-            //  Modification des propriétés du livre sélectionné avec les valeurs saisies
-            livreaModifier.setTitre(titreField.getText());
-            livreaModifier.getAuteur().setNom(nomField.getText());
-            livreaModifier.getAuteur().setPrenom(prenomField.getText());
-            livreaModifier.setPathImage(pathImageField.getText());
-            livreaModifier.setPresentation(presentationField.getText());
-            livreaModifier.setParution(Integer.parseInt(parutionField.getText()));
-
-            // Conversion et validation des valeurs numériques pour Colonne et Rangée
-            try {
-                int colonne = Integer.parseInt(colonneField.getText().trim());
-                int rangee = Integer.parseInt(rangeeField.getText().trim());
-
-                // Contraintes : Colonne et Rangée doivent être entre 1 et 7
-                if (colonne < 1 || colonne > 7 || rangee < 1 || rangee > 7) {
-                    System.out.println("La colonne et la rangée doivent être entre 1 et 7.");
-                    return;
-                }
-                livreaModifier.setColonne(colonne);
-                livreaModifier.setRangee(rangee);
-            } catch (NumberFormatException e) {
-                System.out.println("Veuillez entrer des valeurs numériques valides pour Colonne et Rangée.");
-                return; // Arrêter l'exécution en cas d'erreur de conversion
-            }
-            // Mise à jour de la table
-            tableView.refresh();
-            handleSave();
-            // En cas de bug
-            System.out.println("Tell me where is the error !");
-        } else {
-            System.out.println("Veuillez sélectionner un livre à modifier.");
-        }
-    }
-
     //Fonction pour les boutons
     /**
      * Ajoute une colonne "Actions" à la TableView contenant deux boutons : Modifier et Supprimer.
@@ -348,71 +300,40 @@ public BibliothequeController() {
      */
     private void ajouterBoutonsActions() {
         actionsColumn.setCellFactory(param -> new TableCell<>() {
+            private final Button modifierButton = new Button("Modifier");
+            private final Button supprimerButton = new Button("Supprimer");
 
-            // Création des boutons pour chaque ligne
-            private final Button Modifier = new Button("Modifier");
-            private final Button Supprimer = new Button("Supprimer");
-
-            // Bloc d'initialisation des boutons et des événements
             {
-                //  Gestion de l'événement pour le bouton Modifier
-                Modifier.setOnAction(event -> {
-                    // Récupère le livre sélectionné dans la ligne correspondante
+                // Gestion de l'événement pour le bouton Modifier
+                modifierButton.setOnAction(event -> {
                     Livre livreSelectionne = getTableView().getItems().get(getIndex());
-
-                    // Appelle la méthode de pré-remplissage des champs avec les données du livre sélectionné
-                    preRemplirChamps(livreSelectionne);
-
-                    // Appelle directement la méthode de mise à jour
-                    updateLivre();
+                    if (livreSelectionne != null) {
+                        ouvrirFormulaireModification(livreSelectionne);
+                    } else {
+                        errorLabel.setText("Veuillez sélectionner un livre à modifier.");
+                    }
                 });
 
-                //  Gestion de l'événement pour le bouton Supprimer
-                Supprimer.setOnAction(event -> {
-                    // Appelle directement la méthode de suppression existante
+                // Gestion de l'événement pour le bouton Supprimer
+                supprimerButton.setOnAction(event -> {
                     supprimerLivre();
                 });
-
                 // Application de styles CSS aux boutons pour un meilleur rendu visuel
-                Modifier.setStyle("-fx-background-color: #eab676; -fx-text-fill: white;");
-                Supprimer.setStyle("-fx-background-color: #33636f; -fx-text-fill: white;");
+                modifierButton.setStyle("-fx-background-color: #eab676; -fx-text-fill: white;");
+                supprimerButton.setStyle("-fx-background-color: #33636f; -fx-text-fill: white;");
             }
 
-            /**
-             * La méthode updateItem est appelée automatiquement par JavaFX à chaque mise à jour de la cellule.
-             * Elle décide si les boutons doivent être affichés ou non, en fonction de la présence de données.
-             */
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-
-                // ✅ Si la cellule est vide, ne pas afficher de boutons
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    // ✅ Sinon, affiche les boutons Modifier et Supprimer dans un conteneur horizontal (HBox)
-                    setGraphic(new HBox(10, Modifier, Supprimer));
+                    setGraphic(new HBox(10, modifierButton, supprimerButton));
                 }
             }
         });
     }
-    /**
-     * Pré-remplit les champs du formulaire avec les informations du livre sélectionné.
-     * Cette méthode est utilisée lors de la modification d'un livre pour précharger les données existantes.
-     * @param livretoUpdate Le livre sélectionné dans la TableView
-     */
-    private void preRemplirChamps(Livre livretoUpdate) {
-        // ✅ Met à jour les champs de saisie avec les données du livre
-        titreField.setText(livretoUpdate.getTitre());
-        nomField.setText(livretoUpdate.getAuteur().getNom());
-        prenomField.setText(livretoUpdate.getAuteur().getPrenom());
-        presentationField.setText(livretoUpdate.getPresentation());
-        parutionField.setText(String.valueOf(livretoUpdate.getParution()));
-        colonneField.setText(String.valueOf(livretoUpdate.getColonne()));
-        rangeeField.setText(String.valueOf(livretoUpdate.getRangee()));
-        pathImageField.setText(livretoUpdate.getPathImage());
-    }
-
     /**
      *
      * @param bibliotheque La bibliotheque a rajouter dans la TableView
@@ -424,6 +345,25 @@ public BibliothequeController() {
         tableView.setItems(livresObservable);
     }
 
-//**Fonction pour la sauvegarde des données dans le fichier XML"
+//**Fonction pour l'ouverture du fichier XML"
+private void ouvrirFormulaireModification(Livre livreSelectionne) {
+    try {
+        // Charger le fichier FXML du formulaire
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bibliotheque/View/Update.fxml"));
+        Parent root = loader.load();
+        // Obtenir le contrôleur et lui passer l'objet sélectionné
+        FormulaireModificationController controller = loader.getController();
+        controller.initialiserFormulaire(livreSelectionne, this);
+        // Créer et afficher une fenêtre modale
+        Stage stage = new Stage();
+        stage.setTitle("Modifier le Livre");
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);  // Fenêtre modale
+        stage.showAndWait();  // Bloque jusqu'à fermeture
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 
 }

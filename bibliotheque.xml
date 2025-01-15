@@ -7,6 +7,7 @@
         </auteur>
         <colonne>5</colonne>
         <parution>2000</parution>
+        <pathImage></pathImage>
         <presentation>Ce livre est une introduction au schema XSD</presentation>
         <rangee>2</rangee>
         <titre>XSD pour les nuls</titre>
@@ -17,7 +18,8 @@
             <prenom>JK</prenom>
         </auteur>
         <colonne>5</colonne>
-        <parution>1996</parution>
+        <parution>2001</parution>
+        <pathImage></pathImage>
         <presentation>Ce livre est une introduction au schema XSD</presentation>
         <rangee>2</rangee>
         <titre>HarryPotter</titre>

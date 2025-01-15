@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.example.bibliotheque.Controller.FormulaireModificationController"
+          stylesheets="@style.css"
+          hgap="10" vgap="10">
+    <Label text="Modification d'un livre" style="-fx-font-size: 24px; -fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+
+    <Label text="Titre:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="titreField" promptText="Titre" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <Label text="Nom de l'Auteur:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField fx:id="nomField" promptText="Nom de l'Auteur" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <Label text="Prénom de l'Auteur:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <TextField fx:id="prenomField" promptText="Prénom de l'Auteur" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+    <Label text="Présentation:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <TextField fx:id="presentationField" promptText="Présentation" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+    <Label text="Date de Parution:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <TextField fx:id="parutionField" promptText="Date de Parution" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+    <Label text="Colonne:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+    <TextField fx:id="colonneField" promptText="Colonne" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+    <Label text="Rangée:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+    <TextField fx:id="rangeeField" promptText="Rangée" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+
+    <Label text="Chemin de l'image:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+    <TextField fx:id="pathImageField" promptText="Chemin de l'image" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+
+    <Button fx:id="saveButton" text="Modifier" onAction="#sauvegarderModification" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+
+    <Label fx:id="messageLabel" textFill="cadetblue" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="2"/>
+</GridPane>
