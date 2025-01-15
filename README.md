@@ -1,8 +1,3 @@
-📚 Bibliothèque JavaFX
-Une application de gestion de bibliothèque développée en Java avec JavaFX et JAXB.
-
-🎯 Objectifs du Projet
-Ce projet est divisé en plusieurs lots de développement. 
 Le présent document concerne Lot 1 : Fondations de l'application.
 
 📖 Gestion des livres : Créer, modifier, supprimer et consulter des livres.
@@ -14,8 +9,6 @@ Le présent document concerne Lot 1 : Fondations de l'application.
 💾 Édition : Sauvegarder et Sauvegarder sous un fichier XML.
 
 ℹ️ About : Informations sur l'application et photos des développeurs.
-
-
 
 
 🛠️ Technologies Utilisées

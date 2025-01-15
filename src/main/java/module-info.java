@@ -10,9 +10,13 @@ module com.example.bibliotheque {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires jakarta.xml.bind;
+    requires java.desktop;
 
     opens com.example.bibliotheque to javafx.fxml;
     exports com.example.bibliotheque;
     exports com.example.bibliotheque.Controller;
     opens com.example.bibliotheque.Controller to javafx.fxml;
+    opens com.example.bibliotheque.Model to javafx.base, jakarta.xml.bind;
+
 }
