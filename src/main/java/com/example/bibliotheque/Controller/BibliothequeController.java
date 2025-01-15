@@ -59,6 +59,9 @@ public class BibliothequeController {
     @FXML private MenuItem saveMenuItem;
 
     @FXML private MenuItem saveAsMenuItem;
+
+    private String xmlFilePath = "src/main/resources/Biblio.xml";
+
     // Déclaration et initialisation d'une liste observable de type Livre.
 // FXCollections.observableArrayList() crée une liste dynamique qui
 // surveille les modifications apportées à son contenu (ajouts, suppressions, modifications).
@@ -72,7 +75,7 @@ private ObservableList<Livre> livresObservable = FXCollections.observableArrayLi
 public BibliothequeController() {
     try {
         JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
-        File fichierXML = new File("src/main/resources/Biblio.xml");
+        File fichierXML = new File(xmlFilePath);
         //createUnmarshaller cree un outil de conversion de XMl en java et unmarshal fait la conversion
         if (fichierXML.exists()) {
             bibliotheque = (Bibliotheque) context.createUnmarshaller().unmarshal(fichierXML);
@@ -106,7 +109,6 @@ public BibliothequeController() {
     @FXML
     public void handleOpen() throws JAXBException {
         // Code pour gérer l'action "Ouvrir"
-        String filePath;
         File xmlStream;
         Bibliotheque b;
         JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
@@ -122,8 +124,8 @@ public BibliothequeController() {
         else
             System.out.println("You chose " + fd.getDirectory() + filename);
 
-        filePath = fd.getDirectory() + fd.getFile();
-        xmlStream = new File(filePath);
+        xmlFilePath = fd.getDirectory() + fd.getFile();
+        xmlStream = new File(xmlFilePath);
         b =  (Bibliotheque) unmarshaller.unmarshal(xmlStream);
         ChargerBibliothequeAView(b);
     }
@@ -136,8 +138,6 @@ public BibliothequeController() {
         System.exit(0);
     }
 
-
-    //isaac
     // Méthode pour sauvegarder dans un fichier XML
     @FXML
     public void handleSave() {
@@ -148,16 +148,17 @@ public BibliothequeController() {
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
             // Spécifie un fichier par défaut
-            File file = new File("bibliotheque.xml");
+            File file = new File(xmlFilePath);
             marshaller.marshal(bibliotheque, file);
 
             // Confirmation
-            showAlert(Alert.AlertType.INFORMATION, "Sauvegarde réussie", "Les données ont été sauvegardées dans bibliotheque.xml.");
+            showAlert(Alert.AlertType.INFORMATION, "Sauvegarde réussie", "Les données ont été sauvegardées dans " + xmlFilePath);
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Erreur de sauvegarde", "Impossible de sauvegarder les données : " + e.getMessage());
         }
     }
-    // Méthode pour "Sauvegarder sous"
+
+    // Méthode pour sauvegarder dans un fichier XML
     @FXML
     public void handleSaveAs() {
         try {
@@ -168,6 +169,8 @@ public BibliothequeController() {
             File file = fileChooser.showSaveDialog(null);
 
             if (file != null) {
+                xmlFilePath =  file.getAbsolutePath();
+                System.out.println("xmlFilePath : " + xmlFilePath);
                 JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
                 Marshaller marshaller = context.createMarshaller();
                 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -175,7 +178,7 @@ public BibliothequeController() {
                 marshaller.marshal(bibliotheque, file);
 
                 // Confirmation
-                showAlert(Alert.AlertType.INFORMATION, "Sauvegarde réussie", "Les données ont été sauvegardées dans " + file.getAbsolutePath());
+                showAlert(Alert.AlertType.INFORMATION, "Sauvegarde réussie", "Les données ont été sauvegardées dans " + xmlFilePath);
             }
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Erreur de sauvegarde", "Impossible de sauvegarder les données : " + e.getMessage());
