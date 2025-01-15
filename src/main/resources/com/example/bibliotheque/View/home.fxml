@@ -2,7 +2,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.geometry.*?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bibliotheque.Controller.HomeController"
             stylesheets="@style.css">

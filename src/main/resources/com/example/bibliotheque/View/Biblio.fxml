@@ -9,6 +9,7 @@
     <MenuBar >
         <Menu text="Fichier">
             <MenuItem text="Ouvrir" fx:id="itemOuvrir" onAction="#handleOpen"/>
+            <MenuItem text="Exporter" fx:id="itemExport" onAction="#handleExport"/>
             <MenuItem text="Quitter" fx:id="itemQuitter" onAction="#handleLeft"/>
         </Menu>
         <Menu text="Edition">
@@ -16,7 +17,7 @@
             <MenuItem text="Sauvegarder sous" fx:id="itemSauvegarderSous" onAction="#handleSaveAs"/>
         </Menu>
         <Menu text="About">
-            <MenuItem text="Infos" fx:id="itemInfos" onAction="#handleInfos"/>
+            <MenuItem text="Infos" fx:id="itemInfos" onAction="#handleAbout"/>
         </Menu>
     </MenuBar>
     <!-- Titre du formulaire -->

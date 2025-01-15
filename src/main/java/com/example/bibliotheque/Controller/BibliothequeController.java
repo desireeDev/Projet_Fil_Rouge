@@ -137,6 +137,13 @@ public BibliothequeController() {
         // Ferme l'application
         System.exit(0);
     }
+//Fonction pour l'exportation
+    @FXML
+    public void handleExport() {
+        // Code pour gérer l'action  d'Exportation
+        System.out.println("Voulez vous exportez!");
+
+    }
 
     // Méthode pour sauvegarder dans un fichier XML
     @FXML
@@ -202,13 +209,23 @@ public BibliothequeController() {
     }
     @FXML
     public void handleAbout() {
-        // Code pour afficher un message d'info dans le menu "About"
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("About");
-        alert.setHeaderText("Ma Bibliothèque");
-        alert.setContentText("Version 1.0");
-        alert.showAndWait();
+        try {
+            // Charger le fichier about.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bibliotheque/View/about.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle fenêtre
+            Stage aboutStage = new Stage();
+            aboutStage.setTitle("À propos");
+            aboutStage.setScene(new Scene(root));
+            aboutStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+
+
     @FXML
     //****Conception de la fonction addLivre***//
     public void ajouterLivre() {
@@ -361,6 +378,7 @@ private void ouvrirFormulaireModification(Livre livreSelectionne) {
         Stage stage = new Stage();
         stage.setTitle("Modifier le Livre");
         stage.setScene(new Scene(root));
+        stage.setMaximized(true);//Maximisez la taille
         stage.initModality(Modality.APPLICATION_MODAL);  // Fenêtre modale
         stage.showAndWait();  // Bloque jusqu'à fermeture
     } catch (IOException e) {
