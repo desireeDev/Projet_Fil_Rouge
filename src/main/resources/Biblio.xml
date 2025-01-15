@@ -33,16 +33,4 @@
         <rangee>2</rangee>
         <titre>Eragon</titre>
     </livre>
-    <livre>
-        <auteur>
-            <nom>DDSD</nom>
-            <prenom>DSDS</prenom>
-        </auteur>
-        <colonne>3</colonne>
-        <parution>2021</parution>
-        <pathImage>DFBGDFG</pathImage>
-        <presentation>DFDF</presentation>
-        <rangee>4</rangee>
-        <titre>2312</titre>
-    </livre>
 </bibliotheque>
