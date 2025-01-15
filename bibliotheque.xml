@@ -33,16 +33,4 @@
         <rangee>2</rangee>
         <titre>Eragon</titre>
     </livre>
-    <livre>
-        <auteur>
-            <nom>KK</nom>
-            <prenom>KK</prenom>
-        </auteur>
-        <colonne>5</colonne>
-        <parution>2024</parution>
-        <pathImage>KKKKKKKK</pathImage>
-        <presentation>KKKKKKKKK</presentation>
-        <rangee>5</rangee>
-        <titre>KKKK</titre>
-    </livre>
 </bibliotheque>
