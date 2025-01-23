@@ -12,7 +12,7 @@ module com.example.bibliotheque {
     requires com.almasb.fxgl.all;
     requires jakarta.xml.bind;
     requires java.desktop;
-
+    requires org.apache.poi.ooxml;
     opens com.example.bibliotheque to javafx.fxml;
     exports com.example.bibliotheque;
     exports com.example.bibliotheque.Controller;

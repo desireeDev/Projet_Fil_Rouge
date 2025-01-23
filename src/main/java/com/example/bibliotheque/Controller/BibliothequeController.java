@@ -26,13 +26,23 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+
+
+
 public class BibliothequeController {
     //public MenuItem itemOuvrir;
     //Define the tableColumns who contains the elements
     //FXML to lier les elements definis dans la vue au controleur java
     //Definition of tableau who shows les objets de type Livre
     @FXML private TableView<Livre> tableView;
-//Getter pour la récupération vu que tableView est déclaré private
+    //Getter pour la récupération vu que tableView est déclaré private
     public TableView<Livre> getTableView() {
         return tableView;
     }
@@ -45,7 +55,7 @@ public class BibliothequeController {
     @FXML private TableColumn<Livre, Integer> rangeeColumn;
     @FXML private TableColumn<Livre, String> pathImageColumn;
     @FXML private TableColumn<Livre, Void> actionsColumn; // Nouvelle colonne d'actio
-//TextField=Champs de saisie des attributs
+    //TextField=Champs de saisie des attributs
     @FXML private TextField titreField;
     @FXML private TextField nomField;
     @FXML private TextField prenomField;
@@ -66,32 +76,32 @@ public class BibliothequeController {
 // FXCollections.observableArrayList() crée une liste dynamique qui
 // surveille les modifications apportées à son contenu (ajouts, suppressions, modifications).
 // Cette liste sera  utilisée ici  pour alimenter la TableView et mettre à jour automatiquement notre interface user(View).
-private ObservableList<Livre> livresObservable = FXCollections.observableArrayList();
+    private ObservableList<Livre> livresObservable = FXCollections.observableArrayList();
 
-//Objet who contains la collection(ensemble) des livres
+    //Objet who contains la collection(ensemble) des livres
     private Bibliotheque bibliotheque;
-//Désérialisation du fichier XML
+    //Désérialisation du fichier XML
 // JAXB and Unmarshaller seront Utilisés pour lire notre  fichier XML et charger les données dans l'objet bibliotheque.
-public BibliothequeController() {
-    try {
-        JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
-        File fichierXML = new File(xmlFilePath);
-        //createUnmarshaller cree un outil de conversion de XMl en java et unmarshal fait la conversion
-        if (fichierXML.exists()) {
-            bibliotheque = (Bibliotheque) context.createUnmarshaller().unmarshal(fichierXML);
-        } else {
-            bibliotheque = new Bibliotheque();
+    public BibliothequeController() {
+        try {
+            JAXBContext context = JAXBContext.newInstance(Bibliotheque.class);
+            File fichierXML = new File(xmlFilePath);
+            //createUnmarshaller cree un outil de conversion de XMl en java et unmarshal fait la conversion
+            if (fichierXML.exists()) {
+                bibliotheque = (Bibliotheque) context.createUnmarshaller().unmarshal(fichierXML);
+            } else {
+                bibliotheque = new Bibliotheque();
+            }
+        } catch (JAXBException e) {
+            e.printStackTrace();
         }
-    } catch (JAXBException e) {
-        e.printStackTrace();
     }
-}
-//FXML pour faire la liason entre la vue et le controller
+    //FXML pour faire la liason entre la vue et le controller
     @FXML
     public void initialize() {
-    //Liaison des données
-    //sellCellValueFactory permet de lier chaque column à son attribut correspondant dans la table Livre
-    //PropertyValueFactory  lie la propriété de l'objet Livre  à une colonne du TableView.
+        //Liaison des données
+        //sellCellValueFactory permet de lier chaque column à son attribut correspondant dans la table Livre
+        //PropertyValueFactory  lie la propriété de l'objet Livre  à une colonne du TableView.
         titleColumn.setCellValueFactory(new PropertyValueFactory<Livre,String>("titre"));
         authorColumn.setCellValueFactory(cellData -> {
             Auteur auteur = cellData.getValue().getAuteur();
@@ -137,12 +147,48 @@ public BibliothequeController() {
         // Ferme l'application
         System.exit(0);
     }
-//Fonction pour l'exportation
+    //Fonction pour l'exportation
     @FXML
     public void handleExport() {
-        // Code pour gérer l'action  d'Exportation
-        System.out.println("Voulez vous exportez!");
+        try {
+            // Création d'un document Word
+            XWPFDocument document = new XWPFDocument();
 
+            // Ajout d'un titre
+            XWPFParagraph titleParagraph = document.createParagraph();
+            XWPFRun titleRun = titleParagraph.createRun();
+            titleRun.setText("Bibliothèque - Export des données");
+            titleRun.setBold(true);
+            titleRun.setFontSize(16);
+
+            // Parcourir les données des livres et les ajouter au document
+            for (Livre livre : bibliotheque.getLivres()) { // Assumez que `bibliotheque` contient les livres
+                XWPFParagraph paragraph = document.createParagraph();
+                XWPFRun run = paragraph.createRun();
+                run.setText("Titre : " + livre.getTitre());
+                run.addBreak();
+                run.setText("Auteur : " + livre.getAuteur());
+                run.addBreak();
+                run.setText("Année de parution : " + livre.getParution());
+                run.addBreak();
+                run.addBreak();
+            }
+
+            // Choisir l'emplacement de sauvegarde
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Enregistrer le fichier Word");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Document Word", "*.docx"));
+            File file = fileChooser.showSaveDialog(null);
+
+            if (file != null) {
+                try (FileOutputStream out = new FileOutputStream(file)) {
+                    document.write(out);
+                }
+                System.out.println("Exportation réussie !");
+            }
+        } catch (IOException e) {
+            System.err.println("Erreur lors de l'exportation : " + e.getMessage());
+        }
     }
 
     // Méthode pour sauvegarder dans un fichier XML
@@ -365,26 +411,26 @@ public BibliothequeController() {
         tableView.setItems(livresObservable);
     }
 
-//**Fonction pour l'ouverture du fichier XML"
-private void ouvrirFormulaireModification(Livre livreSelectionne) {
-    try {
-        // Charger le fichier FXML du formulaire
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bibliotheque/View/Update.fxml"));
-        Parent root = loader.load();
-        // Obtenir le contrôleur et lui passer l'objet sélectionné
-        FormulaireModificationController controller = loader.getController();
-        controller.initialiserFormulaire(livreSelectionne, this);
-        // Créer et afficher une fenêtre modale
-        Stage stage = new Stage();
-        stage.setTitle("Modifier le Livre");
-        stage.setScene(new Scene(root));
-        stage.setMaximized(true);//Maximisez la taille
-        stage.initModality(Modality.APPLICATION_MODAL);  // Fenêtre modale
-        stage.showAndWait();  // Bloque jusqu'à fermeture
-    } catch (IOException e) {
-        e.printStackTrace();
+    //**Fonction pour l'ouverture du fichier XML"
+    private void ouvrirFormulaireModification(Livre livreSelectionne) {
+        try {
+            // Charger le fichier FXML du formulaire
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bibliotheque/View/Update.fxml"));
+            Parent root = loader.load();
+            // Obtenir le contrôleur et lui passer l'objet sélectionné
+            FormulaireModificationController controller = loader.getController();
+            controller.initialiserFormulaire(livreSelectionne, this);
+            // Créer et afficher une fenêtre modale
+            Stage stage = new Stage();
+            stage.setTitle("Modifier le Livre");
+            stage.setScene(new Scene(root));
+            stage.setMaximized(true);//Maximisez la taille
+            stage.initModality(Modality.APPLICATION_MODAL);  // Fenêtre modale
+            stage.showAndWait();  // Bloque jusqu'à fermeture
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-}
 
 
 }

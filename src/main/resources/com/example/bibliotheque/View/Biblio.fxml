@@ -5,12 +5,12 @@
       spacing="15" stylesheets="@style.css">
 
     <!-- Inclusion du menu -->
-    <!--<fx:include source="menu.fxml"/>-->
     <MenuBar >
         <Menu text="Fichier">
             <MenuItem text="Ouvrir" fx:id="itemOuvrir" onAction="#handleOpen"/>
-            <MenuItem text="Exporter" fx:id="itemExport" onAction="#handleExport"/>
-            <MenuItem text="Quitter" fx:id="itemQuitter" onAction="#handleLeft"/>
+            <Menu text="Export">
+                <MenuItem text="Exporter en Word" onAction="#handleExport" />
+            </Menu>            <MenuItem text="Quitter" fx:id="itemQuitter" onAction="#handleLeft"/>
         </Menu>
         <Menu text="Edition">
             <MenuItem text="Sauvegarder" fx:id="itemSauvegarder" onAction="#handleSave"/>
