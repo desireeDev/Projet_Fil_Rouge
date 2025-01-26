@@ -20,11 +20,12 @@
                             <xs:element name="colonne" type="xs:unsignedByte" />
                             <xs:element name="rangee" type="xs:unsignedByte" />
                             <xs:element name="path" type="xs:string" minOccurs="0" />
+                            <xs:element name="emprunte" type="xs:boolean" minOccurs="0" /> <!-- Rendu optionnel -->
                             <xs:element name="emprunteur" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="nom" type="xs:string" />
-                                        <xs:element name="prenom" type="xs:string" />
+                                        <xs:element name="nomEmprunteur" type="xs:string" />
+                                        <xs:element name="prenomEmprunteur" type="xs:string" />
                                         <xs:element name="dateEmprunt" type="xs:date" />
                                         <xs:element name="dateRendu" type="xs:date"/>
                                     </xs:sequence>

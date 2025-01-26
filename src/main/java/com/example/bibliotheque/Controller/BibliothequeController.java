@@ -1,5 +1,6 @@
 package com.example.bibliotheque.Controller;
 import com.example.bibliotheque.Model.Bibliotheque;
+import com.example.bibliotheque.Model.Emprunteur;
 import com.example.bibliotheque.Model.Livre;
 import com.example.bibliotheque.Model.Auteur;
 import jakarta.xml.bind.Marshaller;
@@ -12,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -26,6 +28,8 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Optional;
+
 public class BibliothequeController {
     //public MenuItem itemOuvrir;
     //Define the tableColumns who contains the elements
@@ -44,7 +48,8 @@ public class BibliothequeController {
     @FXML private TableColumn<Livre, Integer> colonneColumn;
     @FXML private TableColumn<Livre, Integer> rangeeColumn;
     @FXML private TableColumn<Livre, String> pathImageColumn;
-    @FXML private TableColumn<Livre, Void> actionsColumn; // Nouvelle colonne d'actio
+    @FXML  private TableColumn<Livre, String> statutColumn;
+    @FXML private TableColumn<Livre, Void> actionsColumn;
 //TextField=Champs de saisie des attributs
     @FXML private TextField titreField;
     @FXML private TextField nomField;
@@ -54,11 +59,14 @@ public class BibliothequeController {
     @FXML private TextField colonneField;
     @FXML private TextField rangeeField;
     @FXML private TextField pathImageField;
-
     @FXML private Label errorLabel;
     @FXML private MenuItem saveMenuItem;
 
     @FXML private MenuItem saveAsMenuItem;
+    // CheckBox pour indiquer si le livre est emprunté
+    @FXML private CheckBox emprunteCheckBox;
+    @FXML private Emprunteur emprunteurTemporaire = null; // Stockage temporaire de l'emprunteur
+    @FXML private boolean empruntValide = false; // Indique si le formulaire a été validé
 
     private String xmlFilePath = "src/main/resources/Biblio.xml";
 
@@ -102,6 +110,13 @@ public BibliothequeController() {
         colonneColumn.setCellValueFactory(new PropertyValueFactory<>("colonne"));
         rangeeColumn.setCellValueFactory(new PropertyValueFactory<>("rangee"));
         pathImageColumn.setCellValueFactory(new PropertyValueFactory<>("pathImage"));
+        // Configurer la colonne "Statut" pour la gestion des emprunts
+        statutColumn.setCellValueFactory(cellData -> {
+            boolean emprunte = cellData.getValue().isEmprunte();
+
+            return new javafx.beans.property.SimpleStringProperty(emprunte ? "Indisponible" : "Disponible");
+        });
+
         ChargerBibliothequeAView(bibliotheque);
         // Ajouter la colonne d'actions avec les boutons
         ajouterBoutonsActions();
@@ -203,11 +218,6 @@ public BibliothequeController() {
 
     //isaac
     @FXML
-    public void handleInfos() {
-        // Code pour gérer l'action "Sauvegarder sous"
-        System.out.println("Voici les informations!");
-    }
-    @FXML
     public void handleAbout() {
         try {
             // Charger le fichier about.fxml
@@ -223,7 +233,58 @@ public BibliothequeController() {
             e.printStackTrace();
         }
     }
+//Fonction pour gerer l'emprunt
+    @FXML
+    private void handleEmprunteCheckBox() {
+        if (emprunteCheckBox.isSelected()) {
+            // Si l'emprunteur a déjà été défini, ne pas rouvrir le DialogPanel
+            if (empruntValide) {
+                showAlert(Alert.AlertType.INFORMATION, "Info", "Le livre est déjà marqué comme emprunté.");
+                return;
+            }
 
+            // Sinon, afficher la boîte de dialogue
+            emprunteurTemporaire = showEmprunteurDialog(); // Ouvre la boîte de dialogue
+            if (emprunteurTemporaire != null) {
+                empruntValide = true; // Marquer comme validé
+                showAlert(Alert.AlertType.INFORMATION, "Succès", "Le livre a été bien emprunté !");
+            } else {
+                emprunteCheckBox.setSelected(false); // Décocher si l'utilisateur annule
+            }
+        } else {
+            // Réinitialiser si la case est décochée
+            emprunteurTemporaire = null;
+            empruntValide = false;
+        }
+    }
+
+//Creation de la fonction showEmprunteurDialog
+
+    private Emprunteur showEmprunteurDialog() {
+        try {
+            // Charger la boîte de dialogue depuis le fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bibliotheque/View/emprunteur_dialog.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle fenêtre
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Prêter un livre");
+            dialogStage.setScene(new Scene(root));
+            dialogStage.initModality(Modality.APPLICATION_MODAL);
+
+            // Récupérer le contrôleur
+            EmprunteurDialogController controller = loader.getController();
+
+            // Afficher et attendre l'interaction utilisateur
+            dialogStage.showAndWait();
+
+            // Retourner l'objet Emprunteur si confirmé, sinon null
+            return controller.getEmprunteur();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 
     @FXML
@@ -282,12 +343,33 @@ public BibliothequeController() {
             livre.setColonne(colonne);
             livre.setRangee(rangee);
             livre.setPathImage(pathImageField.getText().trim());
-//Ajout du livre dans la biblio
+
+            // Vérifier si la case "Livre emprunté" est cochée
+            if (empruntValide && emprunteurTemporaire != null) {
+                livre.setEmprunteur(emprunteurTemporaire); // Associer l'emprunteur temporaire
+                livre.setEmprunte(true); // Marquer comme emprunté
+            } else {
+                livre.setEmprunte(false); // Sinon, le livre est disponible
+            }
+            //Ajout du livre dans la biblio
             bibliotheque.addLivre(livre);
             livresObservable.add(livre);
             //Mise à jour de la table
             tableView.refresh();
 
+            // Effacer les champs du formulaire
+            titreField.clear();
+            nomField.clear();
+            prenomField.clear();
+            presentationField.clear();
+            parutionField.clear();
+            colonneField.clear();
+            rangeeField.clear();
+            pathImageField.clear();
+            emprunteCheckBox.setSelected(false); // Réinitialiser la Check
+            // Réinitialiser l'état d'emprunt temporaire
+            emprunteurTemporaire = null;
+            empruntValide = false;
             errorLabel.setText(" Ce livre a été bien ajoutée !");
         } catch (NumberFormatException e) {
             errorLabel.setText(" Veuillez entrer des valeurs numériques valides svp.");

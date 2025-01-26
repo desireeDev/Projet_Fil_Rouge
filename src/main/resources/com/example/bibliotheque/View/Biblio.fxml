@@ -23,7 +23,7 @@
     <!-- Titre du formulaire -->
     <Label text="Formulaire d'Ajout de livres" style="-fx-font-size: 22px; -fx-font-weight: bold;-fx-text-fill: #154c79" />
 
-    <!-- Formulaire -->
+    <!-- Formulaire d'ajout de livre -->
     <GridPane hgap="10" vgap="10">
         <Label text="Titre :" GridPane.rowIndex="0" GridPane.columnIndex="0" />
         <TextField fx:id="titreField" GridPane.rowIndex="0" GridPane.columnIndex="1" />
@@ -44,8 +44,12 @@
         <Label text="Rangée :" GridPane.rowIndex="6" GridPane.columnIndex="0" />
         <TextField fx:id="rangeeField" GridPane.rowIndex="6" GridPane.columnIndex="1" />
 
+        <!-- Nouveau champ pour l'état emprunté -->
+        <Label text="Livre emprunté :" GridPane.rowIndex="8" GridPane.columnIndex="0" />
+        <CheckBox fx:id="emprunteCheckBox" GridPane.rowIndex="8" GridPane.columnIndex="1" onAction="#handleEmprunteCheckBox" />
+
         <!-- Bouton Ajouter avec du style -->
-        <Button text="Ajouter" onAction="#ajouterLivre" GridPane.rowIndex="8" GridPane.columnIndex="1"
+        <Button text="Ajouter" onAction="#ajouterLivre" GridPane.rowIndex="9" GridPane.columnIndex="1"
                 styleClass="submit-button"/>
     </GridPane>
     <!-- Message d'erreur -->
@@ -60,6 +64,7 @@
             <TableColumn fx:id="pathImageColumn" text="Path Image" />
             <TableColumn fx:id="colonneColumn" text="Colonne" />
             <TableColumn fx:id="rangeeColumn" text="Rangée" />
+            <TableColumn fx:id="statutColumn" text="Statut" />
             <TableColumn fx:id="actionsColumn" text="Actions" />
 
         </columns>

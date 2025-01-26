@@ -21,6 +21,7 @@
         <parution>1996</parution>
         <colonne>5</colonne>
         <rangee>2</rangee>
+        <emprunte>false</emprunte>
     </livre>
     <livre>
         <titre>Eragon</titre>
@@ -30,11 +31,12 @@
         </auteur>
         <presentation>Ce livre est une introduction au schema XSD</presentation>
         <parution>2001</parution>
-        <colonne>5</colonne>
+        <colonne>5</colonne>S
         <rangee>2</rangee>
+        <emprunte>true</emprunte>
         <emprunteur>
-            <nom>Martin</nom>
-            <prenom>Luc</prenom>
+            <nomEmprunteur>Martin</nomEmprunteur>
+            <prenomEmprunteur>Luc</prenomEmprunteur>
             <dateEmprunt>2023-09-15</dateEmprunt>
             <dateRendu>2023-11-09</dateRendu>
         </emprunteur>

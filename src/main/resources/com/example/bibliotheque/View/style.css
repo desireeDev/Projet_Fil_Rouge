@@ -74,28 +74,44 @@
 .table-column {
     -fx-pref-width: 155px;
 }
-/*.menu-bar {
-    -fx-background-color: #154c79;
-    -fx-text-fill: white;
-}*/
 
-/*
-//Style pour le Home
-*/
-/* Style pour le bouton *//*
 
-.submit-button {
-    -fx-background-color: #1976D2;
-    -fx-text-fill: white;
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
+/* Style pour la boîte de dialogue */
+.dialog-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #154c79;
+    -fx-border-width: 2px;
     -fx-border-radius: 10px;
-    -fx-padding: 10px 20px;
+    -fx-padding: 10px;
 }
 
-*/
-/* Style global *//*
+/* Style pour les boutons */
+.button {
+    -fx-background-color: #154c79;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px 10px;
+}
 
+.button:hover {
+    -fx-background-color: #1c6ea4;
+}
+
+/* Style pour les labels */
+.label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #154c79;
+}
+
+/* Style pour les champs de texte */
+.text-field, .date-picker {
+    -fx-background-color: white;
+    -fx-border-color: #154c79;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
 .label {
     -fx-font-family: "Arial";
 }
