@@ -1,48 +1,54 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <bibliotheque>
     <livre>
+        <titre>XSD pour les nuls</titre>
         <auteur>
             <nom>Dupond</nom>
             <prenom>Jean</prenom>
         </auteur>
-        <colonne>5</colonne>
-        <parution>2000</parution>
         <presentation>Ce livre est une introduction au schema XSD</presentation>
+        <parution>2000</parution>
+        <colonne>5</colonne>
         <rangee>2</rangee>
-        <titre>XSD pour les nuls</titre>
     </livre>
     <livre>
+        <titre>HarryPotter</titre>
         <auteur>
             <nom>Rowling</nom>
             <prenom>JK</prenom>
         </auteur>
-        <colonne>5</colonne>
-        <parution>1996</parution>
         <presentation>Ce livre est une introduction au schema XSD</presentation>
+        <parution>1996</parution>
+        <colonne>5</colonne>
         <rangee>2</rangee>
-        <titre>HarryPotter</titre>
     </livre>
     <livre>
+        <titre>Eragon</titre>
         <auteur>
             <nom>Paolini</nom>
             <prenom>Christopher</prenom>
         </auteur>
-        <colonne>5</colonne>
-        <parution>2001</parution>
         <presentation>Ce livre est une introduction au schema XSD</presentation>
+        <parution>2001</parution>
+        <colonne>5</colonne>
         <rangee>2</rangee>
-        <titre>Eragon</titre>
+        <emprunteur>
+            <nom>Martin</nom>
+            <prenom>Luc</prenom>
+            <dateEmprunt>2023-09-15</dateEmprunt>
+            <dateRendu>2023-11-09</dateRendu>
+        </emprunteur>
     </livre>
     <livre>
+        <titre>ZEZ</titre>
         <auteur>
             <nom>DFEF</nom>
             <prenom>DFEF</prenom>
         </auteur>
-        <colonne>3</colonne>
-        <parution>2023</parution>
-        <pathImage>DFGDERGF</pathImage>
         <presentation>DFDF</presentation>
+        <parution>2023</parution>
+        <colonne>3</colonne>
         <rangee>2</rangee>
-        <titre>ZEZ</titre>
+        <path>https://example.com/livre</path>
     </livre>
 </bibliotheque>
