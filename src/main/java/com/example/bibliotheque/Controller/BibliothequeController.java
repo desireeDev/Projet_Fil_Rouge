@@ -242,7 +242,6 @@ public BibliothequeController() {
                 showAlert(Alert.AlertType.INFORMATION, "Info", "Le livre est déjà marqué comme emprunté.");
                 return;
             }
-
             // Sinon, afficher la boîte de dialogue
             emprunteurTemporaire = showEmprunteurDialog(); // Ouvre la boîte de dialogue
             if (emprunteurTemporaire != null) {
@@ -259,7 +258,6 @@ public BibliothequeController() {
     }
 
 //Creation de la fonction showEmprunteurDialog
-
     private Emprunteur showEmprunteurDialog() {
         try {
             // Charger la boîte de dialogue depuis le fichier FXML

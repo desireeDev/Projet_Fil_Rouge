@@ -16,6 +16,7 @@ public class FormulaireModificationController {
     @FXML private Button saveButton;
     @FXML private Label messageLabel;
     private Livre livreSelectionne;
+    @FXML private ComboBox<String> statutComboBox;
     private BibliothequeController mainController;
 
     public void initialiserFormulaire(Livre livre, BibliothequeController controller) {
@@ -30,6 +31,10 @@ public class FormulaireModificationController {
         colonneField.setText(String.valueOf(livre.getColonne()));
         rangeeField.setText(String.valueOf(livre.getRangee()));
         pathImageField.setText(livre.getPathImage());
+
+        // Initialiser le ComboBox pour le statut
+        statutComboBox.getItems().addAll("Disponible", "Indisponible");
+        statutComboBox.setValue(livre.isEmprunte() ? "Disponible" : "Indisponible");
     }
 
     @FXML
@@ -44,6 +49,7 @@ public class FormulaireModificationController {
             String colonneText = (colonneField.getText() != null) ? colonneField.getText().trim() : "";
             String rangeeText = (rangeeField.getText() != null) ? rangeeField.getText().trim() : "";
             String pathImage = (pathImageField.getText() != null) ? pathImageField.getText().trim() : "";
+            String statut = statutComboBox.getValue(); // Récupérer le statut sélectionné
             // Conversion sécurisée des champs numériques
             int parution = Integer.parseInt(parutionText);
             int colonne = Integer.parseInt(colonneText);
@@ -57,6 +63,7 @@ public class FormulaireModificationController {
             livreSelectionne.setColonne(colonne);
             livreSelectionne.setRangee(rangee);
             livreSelectionne.setPathImage(pathImage);
+            livreSelectionne.setEmprunte(statut.equals("Indisponible"));
             // Rafraîchir la TableView dans le contrôleur principal
             mainController.getTableView().refresh();
             messageLabel.setText("Livre modifié avec succès !");

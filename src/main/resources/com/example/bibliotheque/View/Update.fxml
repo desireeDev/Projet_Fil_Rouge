@@ -31,8 +31,9 @@
 
     <Label text="Chemin de l'image:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
     <TextField fx:id="pathImageField" promptText="Chemin de l'image" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+    <Label text="Statut:" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+    <ComboBox fx:id="statutComboBox" promptText="Statut" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+    <Button fx:id="saveButton" text="Modifier" onAction="#sauvegarderModification" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
 
-    <Button fx:id="saveButton" text="Modifier" onAction="#sauvegarderModification" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
-
-    <Label fx:id="messageLabel" textFill="cadetblue" GridPane.columnIndex="0" GridPane.rowIndex="10" GridPane.columnSpan="2"/>
+    <Label fx:id="messageLabel" textFill="cadetblue" GridPane.columnIndex="0" GridPane.rowIndex="11" GridPane.columnSpan="2"/>
 </GridPane>
