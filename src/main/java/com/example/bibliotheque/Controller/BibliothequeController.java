@@ -30,8 +30,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
+import org.apache.poi.xwpf.model.XWPFHeaderFooterPolicy;
 import org.apache.poi.xwpf.usermodel.*;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.*;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -168,11 +171,15 @@ public BibliothequeController() {
 
         XWPFDocument wordDocument = new XWPFDocument();
 
+        String wordName = "TableDesMatieres.docx";
+
+        createHeader(wordDocument, wordName);
+
         createTOC(wordDocument, getTableView());
 
         createChapters(wordDocument, getTableView());
 
-        try (FileOutputStream out = new FileOutputStream("TableDesMatieres.docx")) {
+        try (FileOutputStream out = new FileOutputStream(wordName)) {
             wordDocument.write(out);
         } catch (IOException e) {
             e.printStackTrace();
@@ -182,6 +189,7 @@ public BibliothequeController() {
     private static void createChapters(XWPFDocument doc, TableView<Livre> Livres) {
 
         for(Livre livre : Livres.getItems()) {
+
             XWPFParagraph paragraph = doc.createParagraph();
             paragraph.setStyle("Heading1"); // Utiliser un style de titre
             XWPFRun run = paragraph.createRun();
@@ -229,8 +237,19 @@ public BibliothequeController() {
         }
         paragraph.setPageBreak(true);
     }
-    public  static void createHeader() {
+    public  static void createHeader(XWPFDocument doc, String docName) {
+        // Créer une nouvelle section pour le chapitre
+        XWPFHeaderFooterPolicy headerFooterPolicy = new XWPFHeaderFooterPolicy(doc);
+        // Ajouter un en-tête à la nouvelle section
+        XWPFHeader header = headerFooterPolicy.createHeader(XWPFHeaderFooterPolicy.DEFAULT);
+        XWPFParagraph headerParagraph = header.createParagraph();
+        XWPFRun headerRun = headerParagraph.createRun();
 
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = myDateObj.format(myFormatObj);
+
+        headerRun.setText(formattedDate + "\r\n" + docName);
     }
 
     // Méthode pour sauvegarder dans un fichier XML
