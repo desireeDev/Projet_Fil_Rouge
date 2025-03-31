@@ -17,6 +17,8 @@ module com.example.bibliotheque {
     requires org.apache.commons.collections4;
     requires org.apache.xmlbeans;
     requires org.apache.poi.ooxml.schemas;
+    requires mysql.connector.j;
+    requires java.sql;
 
     opens com.example.bibliotheque to javafx.fxml;
     exports com.example.bibliotheque;

@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -26,20 +25,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.awt.*;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.math.BigInteger;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
 
-import org.apache.poi.xwpf.model.XWPFHeaderFooterPolicy;
-import org.apache.poi.xwpf.usermodel.*;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.*;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import java.util.HashMap;
-import java.util.Map;
+import utils.BookExporter;
+import utils.LibraryMySql;
 
 public class BibliothequeController {
     //public MenuItem itemOuvrir;
@@ -169,87 +159,31 @@ public BibliothequeController() {
         // Code pour gérer l'action  d'Exportation
         System.out.println("Voulez vous exportez!");
 
-        XWPFDocument wordDocument = new XWPFDocument();
+        try {
+            LibraryMySql qs = new LibraryMySql("jdbc:mysql://127.0.0.1:3306/ProjetFilRouge", "root", "password");
 
-        String wordName = "TableDesMatieres.docx";
 
-        createHeader(wordDocument, wordName);
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Exporter");
+            fileChooser.setInitialFileName("Bibliotheque.docx");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichiers word", "*.docx"));
+            // Ouvre une boîte de dialogue pour choisir un fichier
+            File file = fileChooser.showSaveDialog(null);
 
-        createTOC(wordDocument, getTableView());
+            System.out.println(file.getName());
+            System.out.println(file.getAbsolutePath());
+            System.out.println(file.getCanonicalPath());
 
-        createChapters(wordDocument, getTableView());
+            if (file != null) {
+                BookExporter a = new BookExporter();
+                a.booksToWord(getTableView(), file.getAbsolutePath(), file.getName());
 
-        try (FileOutputStream out = new FileOutputStream(wordName)) {
-            wordDocument.write(out);
-        } catch (IOException e) {
-            e.printStackTrace();
+                // Confirmation
+                showAlert(Alert.AlertType.INFORMATION, "Sauvegarde réussie", "Les données ont été sauvegardées dans " + file.getAbsolutePath());
+            }
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Erreur d'export", "Impossible d'exporter les données : " + e.getMessage());
         }
-        System.out.println("Fin export!");
-    }
-    private static void createChapters(XWPFDocument doc, TableView<Livre> Livres) {
-
-        for(Livre livre : Livres.getItems()) {
-
-            XWPFParagraph paragraph = doc.createParagraph();
-            paragraph.setStyle("Heading1"); // Utiliser un style de titre
-            XWPFRun run = paragraph.createRun();
-            run.setText(livre.getTitre());
-            run.setBold(true);
-            run.setFontSize(14);
-
-            // Ajouter un signet pour permettre le lien hypertexte
-            paragraph.getCTP().addNewBookmarkStart().setName(livre.getTitre());
-            paragraph.getCTP().addNewBookmarkEnd();
-
-            // Ajouter du texte sous le chapitre
-            XWPFParagraph contentParagraph = doc.createParagraph();
-            String contenu  = "contenu";
-            contentParagraph.createRun().setText(contenu);
-            paragraph.setPageBreak(true);
-        }
-
-
-    }
-
-    /**
-     *
-     */
-    private static void createTOC(XWPFDocument doc, TableView<Livre> Livres) {
-
-        //Création de la table des matières (TOC)
-        XWPFParagraph tocParagraph = doc.createParagraph();
-        tocParagraph.setAlignment(ParagraphAlignment.CENTER);
-        XWPFRun tocRun = tocParagraph.createRun();
-        tocRun.setText("Table des Matières");
-        tocRun.setBold(true);
-        tocRun.setFontSize(16);
-        //tocRun.addBreak();
-
-        XWPFParagraph paragraph = doc.createParagraph();
-
-        for(Livre livre : Livres.getItems()) {
-            // Ajouter un signet comme ancre de lien
-            CTHyperlink hyperlink = paragraph.getCTP().addNewHyperlink();
-            hyperlink.setAnchor(livre.getTitre());
-            hyperlink.addNewR().addNewT().setStringValue("Titre : 1"); //+ livre.getTitre());
-            XWPFRun lineBreakRun = paragraph.createRun();
-            lineBreakRun.addCarriageReturn();
-        }
-        paragraph.setPageBreak(true);
-    }
-    public  static void createHeader(XWPFDocument doc, String docName) {
-        // Créer une nouvelle section pour le chapitre
-        XWPFHeaderFooterPolicy headerFooterPolicy = new XWPFHeaderFooterPolicy(doc);
-        // Ajouter un en-tête à la nouvelle section
-        XWPFHeader header = headerFooterPolicy.createHeader(XWPFHeaderFooterPolicy.DEFAULT);
-        XWPFParagraph headerParagraph = header.createParagraph();
-        XWPFRun headerRun = headerParagraph.createRun();
-
-        LocalDateTime myDateObj = LocalDateTime.now();
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String formattedDate = myDateObj.format(myFormatObj);
-
-        headerRun.setText(formattedDate + "\r\n" + docName);
     }
 
     // Méthode pour sauvegarder dans un fichier XML
