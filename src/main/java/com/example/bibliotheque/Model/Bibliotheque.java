@@ -27,4 +27,27 @@ public class Bibliotheque {
     public void deleteLivre(Livre livre) {
         this.livres.remove(livre);
     }
+    public boolean updateLivre(Livre livreModifie) {
+        // Vérifie si les valeurs de parution et colonne sont valides
+        if (livreModifie.getParution() < 0 || livreModifie.getColonne() < 0) {
+            return false; // Annule la modification si les valeurs sont invalides
+        }
+
+        for (Livre livre : livres) {
+            if (livre.getTitre().equals(livreModifie.getTitre())) {
+                // Mises à jour des attributs du livre
+                livre.setPresentation(livreModifie.getPresentation());
+                livre.setParution(livreModifie.getParution());
+                livre.setColonne(livreModifie.getColonne());
+                livre.setRangee(livreModifie.getRangee());
+                livre.setPathImage(livreModifie.getPathImage());
+                livre.setEmprunte(livreModifie.isEmprunte());
+                return true; // Modification réussie
+            }
+        }
+
+        return false; // Livre non trouvé
+    }
+
+
 }

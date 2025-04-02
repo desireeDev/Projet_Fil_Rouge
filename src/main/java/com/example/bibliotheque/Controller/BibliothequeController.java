@@ -62,7 +62,6 @@ public class BibliothequeController {
     @FXML private TextField pathImageField;
     @FXML private Label errorLabel;
     @FXML private MenuItem saveMenuItem;
-
     @FXML private MenuItem saveAsMenuItem;
     // CheckBox pour indiquer si le livre est emprunté
     @FXML private CheckBox emprunteCheckBox;
@@ -160,8 +159,7 @@ public BibliothequeController() {
         System.out.println("Voulez vous exportez!");
 
         try {
-            LibraryMySql qs = new LibraryMySql("jdbc:mysql://127.0.0.1:3306/ProjetFilRouge", "root", "password");
-
+            //LibraryMySql qs = new LibraryMySql("jdbc:mysql://127.0.0.1:3306/ProjetFilRouge", "root", "password");
 
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Exporter");
@@ -249,7 +247,6 @@ public BibliothequeController() {
             // Charger le fichier about.fxml
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/bibliotheque/View/about.fxml"));
             Parent root = loader.load();
-
             // Créer une nouvelle fenêtre
             Stage aboutStage = new Stage();
             aboutStage.setTitle("À propos");
@@ -309,8 +306,6 @@ public BibliothequeController() {
             return null;
         }
     }
-
-
     @FXML
     //****Conception de la fonction addLivre***//
     public void ajouterLivre() {

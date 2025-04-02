@@ -6,16 +6,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 public class LivreTest {
-
     private Bibliotheque bibliotheque;
     private Livre livreSelectionne;
 
     @BeforeEach
     public void setUp() {
         bibliotheque = new Bibliotheque();
-
         livreSelectionne = new Livre();
         livreSelectionne.setTitre("1984");
         livreSelectionne.setPresentation("Un roman dystopique");
@@ -139,4 +136,59 @@ public class LivreTest {
 
         assertTrue(bibliotheque.getLivres().contains(livre), "Le livre emprunté devrait être ajouté correctement.");
     }
+
+//Tests sur la modification du livre
+    @Test
+    public void testModificationLivre() {
+        // Vérifier que le livre est bien dans la bibliothèque avant la modification
+        assertTrue(bibliotheque.getLivres().contains(livreSelectionne), "Le livre doit exister avant modification.");
+        // Modifier le titre du livre
+        livreSelectionne.setTitre("1984 - Nouvelle Édition");
+
+        // Vérifier que la mise à jour est bien prise en compte dans la bibliothèque
+        assertTrue(bibliotheque.getLivres().contains(livreSelectionne), "Le livre doit toujours être présent après modification.");
+        assertEquals("1984 - Nouvelle Édition", livreSelectionne.getTitre(), "Le titre du livre doit être mis à jour.");
+    }
+    // Test sur les valeurs numériques invalides
+    @Test
+    public void testModificationValeursNumeriquesInvalides() {
+        livreSelectionne.setParution(-1); // Valeur invalide
+        livreSelectionne.setColonne(-5);  // Valeur invalide
+
+        boolean updated = bibliotheque.updateLivre(livreSelectionne);
+        assertFalse(updated, "La modification devrait être annulée.");
+    }
+
+    // Mise à jour du statut du livre
+    @Test
+    public void testMiseAJourStatutLivre() {
+        // S'assurer que le livre existe dans la bibliothèque
+        assertTrue(bibliotheque.getLivres().contains(livreSelectionne), "Le livre devrait être présent dans la bibliothèque avant modification.");
+
+        // Mettre à jour le statut du livre pour qu'il soit emprunté
+        livreSelectionne.setEmprunte(true);
+        boolean updated = bibliotheque.updateLivre(livreSelectionne);
+
+        // Vérification que le statut a bien été modifié
+        assertTrue(updated, "La mise à jour du statut du livre devrait réussir.");
+        assertTrue(livreSelectionne.isEmprunte(), "Le livre devrait être marqué comme emprunté.");
+    }
+    // 5️⃣ Un seul champ modifié
+    @Test
+    public void testModificationUnSeulChamp() {
+        // Vérifier que le livre est déjà dans la bibliothèque avant la modification
+        assertTrue(bibliotheque.getLivres().contains(livreSelectionne), "Le livre doit être présent dans la bibliothèque avant la modification.");
+
+        // Effectuer la modification de la colonne
+        livreSelectionne.setColonne(2);
+        bibliotheque.updateLivre(livreSelectionne);
+
+        // Vérifier que seule la colonne a été modifiée
+        assertEquals(2, bibliotheque.getLivres().stream()
+                .filter(livre -> livre.getTitre().equals(livreSelectionne.getTitre()))
+                .findFirst()
+                .get()
+                .getColonne(), "Seule la colonne devrait être modifiée.");
+    }
+
 }
