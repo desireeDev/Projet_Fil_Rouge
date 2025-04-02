@@ -14,10 +14,8 @@ public class LivreTest {
 
     @BeforeEach
     public void setUp() {
-        // Initialisation de la bibliothèque avec quelques livres
         bibliotheque = new Bibliotheque();
 
-        // Création d'un livre qui sera supprimé
         livreSelectionne = new Livre();
         livreSelectionne.setTitre("1984");
         livreSelectionne.setPresentation("Un roman dystopique");
@@ -27,7 +25,6 @@ public class LivreTest {
         livreSelectionne.setPathImage("/images/1984.png");
         livreSelectionne.setEmprunte(false);
 
-        // Ajouter des livres à la bibliothèque
         Livre autreLivre1 = new Livre();
         autreLivre1.setTitre("Le Petit Prince");
 
@@ -35,23 +32,111 @@ public class LivreTest {
         autreLivre2.setTitre("Moby Dick");
 
         bibliotheque.addLivre(autreLivre1);
-        bibliotheque.addLivre(livreSelectionne); // Livre qui sera supprimé
+        bibliotheque.addLivre(livreSelectionne);
         bibliotheque.addLivre(autreLivre2);
     }
 
     @Test
     public void testSupprimerLivreSelectionne() {
-        // Given : Un livre est sélectionné dans la liste
         assertTrue(bibliotheque.getLivres().contains(livreSelectionne), "Le livre devrait être présent dans la bibliothèque avant suppression.");
 
-        // When : L'utilisateur clique sur "Supprimer"
         bibliotheque.deleteLivre(livreSelectionne);
 
-        // Then : Le livre est retiré de la bibliothèque
         assertFalse(bibliotheque.getLivres().contains(livreSelectionne), "Le livre devrait être supprimé de la bibliothèque.");
-
-        // And : Le livre est retiré de l'affichage
         assertEquals(2, bibliotheque.getLivres().size(), "Le nombre de livres dans la bibliothèque devrait être de 2 après suppression.");
     }
-}
 
+    @Test
+    public void testAjouterLivreValide() {
+        Livre livre = new Livre();
+        livre.setTitre("Nouveau Livre");
+        livre.setPresentation("Présentation valide");
+        livre.setParution(2020);
+        livre.setColonne(3);
+        livre.setRangee(2);
+        livre.setPathImage("/images/nouveau.png");
+        livre.setEmprunte(false);
+
+        bibliotheque.addLivre(livre);
+
+        assertTrue(bibliotheque.getLivres().contains(livre), "Le livre devrait être ajouté à la bibliothèque.");
+    }
+
+    @Test
+    public void testAjouterLivreChampsVides() {
+        Livre livre = new Livre();
+
+        bibliotheque.addLivre(livre);
+
+        assertTrue(bibliotheque.getLivres().contains(livre), "Même un livre avec des champs vides peut être ajouté.");
+    }
+
+    @Test
+    public void testAjouterLivreDateNonNumerique() {
+        Livre livre = new Livre();
+        livre.setTitre("Livre Test");
+        livre.setPresentation("Présentation valide");
+        livre.setParution(-1); // Valeur incorrecte pour la parution
+        livre.setColonne(1);
+        livre.setRangee(1);
+
+        bibliotheque.addLivre(livre);
+
+        assertTrue(bibliotheque.getLivres().contains(livre), "Le livre avec une date invalide est ajouté, à moins d'une validation côté logique.");
+    }
+
+    @Test
+    public void testAjouterLivreDateFuture() {
+        Livre livre = new Livre();
+        livre.setTitre("Livre Futur");
+        livre.setPresentation("Présentation valide");
+        livre.setParution(3000); // Date dans le futur
+        livre.setColonne(1);
+        livre.setRangee(1);
+
+        bibliotheque.addLivre(livre);
+
+        assertTrue(bibliotheque.getLivres().contains(livre), "Le livre est ajouté malgré une date future, sauf si une validation existe.");
+    }
+
+    @Test
+    public void testAjouterLivreColonneRangeeInvalide() {
+        Livre livre = new Livre();
+        livre.setTitre("Livre Invalide");
+        livre.setColonne(10); // Colonne invalide
+        livre.setRangee(10); // Rangée invalide
+
+        bibliotheque.addLivre(livre);
+
+        assertTrue(bibliotheque.getLivres().contains(livre), "Le livre est ajouté malgré une colonne et une rangée invalides.");
+    }
+
+    @Test
+    public void testAjouterLivreDuplique() {
+        Livre livre = new Livre();
+        livre.setTitre("1984"); // Même titre que livreSelectionne
+        livre.setPresentation("Un roman dystopique");
+        livre.setParution(1949);
+        livre.setColonne(1);
+        livre.setRangee(1);
+
+        bibliotheque.addLivre(livre);
+
+        assertTrue(bibliotheque.getLivres().contains(livre), "Le livre en double est ajouté sans vérification d'unicité.");
+    }
+
+    @Test
+    public void testAjouterLivreEmprunte() {
+        Livre livre = new Livre();
+        livre.setTitre("Livre Emprunté");
+        livre.setPresentation("Présentation valide");
+        livre.setParution(2022);
+        livre.setColonne(2);
+        livre.setRangee(3);
+        livre.setEmprunte(true);
+
+        bibliotheque.addLivre(livre);
+
+        assertTrue(bibliotheque.getLivres().contains(livre), "Le livre emprunté devrait être ajouté correctement.");
+    }
+}
