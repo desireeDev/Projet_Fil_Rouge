@@ -1,0 +1,54 @@
+#create USER 'azerty'@'%' IDENTIFIED BY 'password';
+#GRANT ALL PRIVILEGES ON *.* TO 'azerty'@'%';
+#SELECT * FROM mysql.user;
+#INSERT INTO Utilisateurs (UtilisateurName, prenom, nom, mail, userPassword) VALUES 
+#("qazerty", "lucas", "df", "dsf@q.fr",  SHA1('qwerty'));
+#SELECT COUNT(*) FROM Utilisateurs WHERE SHA1('qwerty')=userPassword;
+#GRANT ALL PRIVILEGES ON *.* TO 'biblio_admin'@'%' WITH GRANT OPTION;
+
+
+
+CREATE USER 'utilisateur_lambda'@'%' IDENTIFIED BY 'password';
+GRANT SELECT ON *.* TO 'utilisateur_lambda'@'%';
+
+CREATE USER 'biblio_admin'@'%' IDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON *.* TO 'biblio_admin'@'%';
+
+CREATE SCHEMA `projet_fil_rouge` ;
+
+CREATE TABLE `projet_fil_rouge`.`auteurs` (
+  `id_auteur` INT NOT NULL AUTO_INCREMENT,
+  `id_biblio_auteur` INT NOT NULL,
+  `prenom` VARCHAR(45) NOT NULL,
+  `nom` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_auteur`),
+  UNIQUE INDEX `id_biblio_auteur_UNIQUE` (`id_biblio_auteur` ASC) VISIBLE);
+
+CREATE TABLE `projet_fil_rouge`.`livres` (
+  `id_livre` INT NOT NULL AUTO_INCREMENT,
+  `id_biblio_livre` INT NOT NULL,
+  `titre` VARCHAR(45) NOT NULL,
+  `presentation` VARCHAR(45) NOT NULL,
+  `parution` INT NOT NULL,
+  `non_disponible` VARCHAR(45) NOT NULL,
+  `path_image` VARCHAR(100),
+  `fk_auteur` INT NOT NULL,
+  PRIMARY KEY (`id_livre`),
+  UNIQUE INDEX `id_biblio_livre_UNIQUE` (`id_biblio_livre` ASC) VISIBLE,
+  INDEX `idx_livre_auteur` (`fk_auteur` ASC) VISIBLE,
+  CONSTRAINT `fk_livres_auteurs`
+    FOREIGN KEY (`fk_auteur`)
+    REFERENCES `projet_fil_rouge`.`auteurs` (`id_auteur`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+CREATE TABLE `projet_fil_rouge`.`utilisateurs` (
+  `id_utilisateurs` INT NOT NULL AUTO_INCREMENT,
+  `utilisateur_name` VARCHAR(45) NOT NULL,
+  `prenom` VARCHAR(45) NOT NULL,
+  `nom` VARCHAR(45) NOT NULL,
+  `mail` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_utilisateurs`),
+  UNIQUE INDEX `utilisateur_name_UNIQUE` (`utilisateur_name` ASC) VISIBLE,
+  UNIQUE INDEX `mail_UNIQUE` (`mail` ASC) VISIBLE);
