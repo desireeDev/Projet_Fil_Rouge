@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.image.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bibliotheque.Controller.HomeController"
-            stylesheets="@style.css">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="651.0" prefWidth="688.0" style="-fx-background-color: #88a9c9;" stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.bibliotheque.Controller.HomeController">
     <center>
-        <VBox alignment="CENTER" spacing="20">
+        <VBox alignment="CENTER" prefHeight="255.0" prefWidth="600.0" spacing="20">
             <ImageView fitHeight="400" fitWidth="600">
                 <image>
-                    <Image url="@images/rmv.png"/>
+                    <Image url="@images/Labible.png" />
                 </image>
             </ImageView>
-            <Label text="Gestion de ma Bibliothèque" style="-fx-font-size: 43px; -fx-font-weight: bold; -fx-text-fill: #e5a191;"/>
-            <Button text="Ouvrir la Bibliothèque" onAction="#openBiblio" style="-fx-background-color: #92236f; -fx-text-fill: white; -fx-font-size: 18px;" />
+         <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion d'une Bibliothèque">
+            <font>
+               <Font name="Century" size="23.0" />
+            </font>
+         </Text>
+         <Button mnemonicParsing="false" onAction="#openBiblio" text="Ouvrir " textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+            <font>
+               <Font name="Century" size="15.0" />
+            </font>
+         </Button>
         </VBox>
     </center>
 </BorderPane>
-
