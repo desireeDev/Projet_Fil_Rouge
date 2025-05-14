@@ -27,8 +27,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build with JavaFX plugin
-      run: mvn clean javafx:compile
+    - name: Build with Maven
+      run: mvn clean install
     - name: Test with Maven
       run: mvn test
     - name: Generate Javadoc
