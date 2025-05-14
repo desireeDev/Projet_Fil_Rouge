@@ -148,6 +148,12 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                    <compilerArgs>
+                     <arg>--module-path</arg>
+                     <arg>${java.home}/lib</arg>
+                     <arg>--add-modules</arg>
+                     <arg>ALL-MODULE-PATH</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
 
@@ -159,6 +165,15 @@
                 <configuration>
                     <mainClass>com.example.tests.Main</mainClass>
                 </configuration>
+                <executions>
+                 <execution>
+                  <goals>
+                   <goal>compile</goal>
+                   <goal>process-classes</goal>
+                   <goal>run</goal>
+                 </goals>
+               </execution>
+            </executions>
             </plugin>
         </plugins>
     </build>
