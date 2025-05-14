@@ -12,11 +12,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <maven.compile.modulepath>${project.build.outputDirectory}</maven.compile.modulepath>
         <junit.version>5.10.2</junit.version>
         <javafx.version>23.0.1</javafx.version>
         <javafx.platform>linux</javafx.platform>
-             
+        <!--   <sonar.projectKey>my_project_key</sonar.projectKey>
+           <sonar.organization>my_organization</sonar.organization>
+           <sonar.host.url>https://sonarcloud.io</sonar.host.url>-->
     </properties>
 
     <dependencies>
@@ -61,31 +62,26 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>${javafx.version}</version>
-            <classifier>linux</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
-            <classifier>linux</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-web</artifactId>
             <version>${javafx.version}</version>
-            <classifier>linux</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-swing</artifactId>
             <version>${javafx.version}</version>
-            <classifier>linux</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-media</artifactId>
             <version>${javafx.version}</version>
-            <classifier>linux</classifier>
         </dependency>
 
         <!-- Additional Dependencies -->
@@ -142,38 +138,22 @@
 
     <build>
         <plugins>
-          <plugin>
-             <groupId>org.moditect</groupId>
-             <artifactId>moditect-maven-plugin</artifactId>
-              <version>1.0.0.Beta2</version>
-             </plugin>
             <!-- Compiler Plugin -->
-           <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-compiler-plugin</artifactId>
-              <version>3.10.1</version>
-              <configuration>
-              <release>17</release>
-              <compilerArgs>
-                <arg>--module-path</arg>
-                <arg>${maven.compile.modulepath}</arg>
-              </compilerArgs>
-              </configuration>
-          </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
 
             <!-- JavaFX Maven Plugin -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
-                <executions>
-                   <execution>
-                       <goals>
-                          <goal>run</goal>
-                       </goals>
-                    </execution>
-                   </executions>
                 <configuration>
                     <mainClass>com.example.tests.Main</mainClass>
                 </configuration>
