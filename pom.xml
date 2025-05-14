@@ -165,15 +165,6 @@
                 <configuration>
                     <mainClass>com.example.tests.Main</mainClass>
                 </configuration>
-                <executions>
-                 <execution>
-                  <goals>
-                   <goal>compile</goal>
-                   <goal>process-classes</goal>
-                   <goal>run</goal>
-                 </goals>
-               </execution>
-            </executions>
             </plugin>
         </plugins>
     </build>
