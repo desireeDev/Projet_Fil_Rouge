@@ -151,8 +151,6 @@
                     <compilerArgs>
                      <arg>--module-path</arg>
                      <arg>${java.home}/lib</arg>
-                     <arg>--add-modules</arg>
-                     <arg>ALL-MODULE-PATH</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>
