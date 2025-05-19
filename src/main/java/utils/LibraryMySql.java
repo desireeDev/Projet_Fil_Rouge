@@ -1,3 +1,4 @@
+/*
 
 package utils;
 import com.example.bibliotheque.Model.Auteur;
@@ -109,11 +110,13 @@ public class LibraryMySql {
 }
 
 
+*/
 /**
      * Efface toutes les anciennes données
      * @param livres
      * @throws SQLException
-     */
+     *//*
+
 
     public  void setLivres(Livre[] livres) throws SQLException {
         if(connection == null || connection.isClosed()) return;
@@ -173,11 +176,13 @@ public class LibraryMySql {
     }
 
 
+*/
 /**
      * Ne met à jour que les livres modifiés et les nouveaux livres
      * @param livres
      * @throws SQLException
-     */
+     *//*
+
 
     public  void setLivresModifies(Livre[] livres) throws SQLException {
 
@@ -245,4 +250,4 @@ public class LibraryMySql {
         psLivre.setInt(7, idAuteur);
         psLivre.executeUpdate();
     }
-}
+}*/
