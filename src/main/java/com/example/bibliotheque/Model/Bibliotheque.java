@@ -9,8 +9,15 @@ import java.util.List;
 
 @XmlRootElement(name = "bibliotheque")
 public class Bibliotheque {
+    private String id;
     private List<Livre> livres = new ArrayList<>();
-
+    @XmlElement(name = "id")
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
     @XmlElement(name = "livre")
     public List<Livre> getLivres() {
         return livres;
@@ -32,7 +39,6 @@ public class Bibliotheque {
         if (livreModifie.getParution() < 0 || livreModifie.getColonne() < 0) {
             return false; // Annule la modification si les valeurs sont invalides
         }
-
         for (Livre livre : livres) {
             if (livre.getTitre().equals(livreModifie.getTitre())) {
                 // Mises à jour des attributs du livre
@@ -45,7 +51,6 @@ public class Bibliotheque {
                 return true; // Modification réussie
             }
         }
-
         return false; // Livre non trouvé
     }
 
