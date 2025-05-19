@@ -13,8 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" style="-fx-background-color: #a39484;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotheque.Controller.UserController"
->
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" style="-fx-background-color: #a39484;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotheque.Controller.UserController">
    <left>
       <AnchorPane prefHeight="460.0" prefWidth="520.0" style="-fx-background-color: #a39484;" BorderPane.alignment="TOP_LEFT">
          <children>
@@ -29,7 +28,7 @@
    <right>
       <AnchorPane prefHeight="400.0" prefWidth="332.0" style="-fx-background-color: #6195b6;" BorderPane.alignment="TOP_RIGHT">
          <children>
-            <Label layoutX="14.0" layoutY="108.0" text="Name">
+            <Label layoutX="14.0" layoutY="108.0" text="Username">
                <font>
                   <Font name="Century" size="14.0" />
                </font>
@@ -40,7 +39,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <PasswordField layoutX="87.0" layoutY="156.0" prefHeight="25.0" prefWidth="184.0" />
+            <PasswordField layoutX="87.0" layoutY="156.0" prefHeight="25.0" prefWidth="186.0" />
             <Button layoutX="32.0" layoutY="250.0" mnemonicParsing="false" onAction="#onConnect" prefHeight="32.0" prefWidth="239.0" style="-fx-background-color: #a39484;" text="Login" textOverrun="CLIP">
                <font>
                   <Font name="System Bold" size="14.0" />
@@ -49,7 +48,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Button>
-            <Button layoutX="32.0" layoutY="322.0" mnemonicParsing="false"  onAction="#onRegister" prefHeight="32.0" prefWidth="239.0" style="-fx-background-color: #a39484;" text="Register" textOverrun="CLIP">
+            <Button layoutX="32.0" layoutY="322.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="32.0" prefWidth="239.0" style="-fx-background-color: #a39484;" text="Register" textOverrun="CLIP">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

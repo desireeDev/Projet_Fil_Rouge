@@ -30,18 +30,18 @@
                         <Font name="Century" size="14.0" />
                     </font>
                 </Label>
-                <TextField layoutX="86.0" layoutY="103.0" prefHeight="25.0" prefWidth="186.0" />
+                <TextField layoutX="98.0" layoutY="103.0" prefHeight="25.0" prefWidth="165.0" />
                 <Label layoutX="4.0" layoutY="154.0" text="FirstName" textOverrun="CLIP">
                     <font>
                         <Font name="Century" size="14.0" />
                     </font>
                 </Label>
-                <Button layoutX="29.0" layoutY="365.0" mnemonicParsing="false" onAction="#onConnect" prefHeight="32.0" prefWidth="239.0" style="-fx-background-color: #a39484;" text="Login">
+                <Button layoutX="29.0" layoutY="390.0" mnemonicParsing="false" onAction="#onConnect" prefHeight="32.0" prefWidth="239.0" style="-fx-background-color: #a39484;" text="Login">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Button>
-                <Button layoutX="29.0" layoutY="302.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="32.0" prefWidth="239.0" style="-fx-background-color: #a39484;" text="Register">
+                <Button layoutX="29.0" layoutY="333.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="32.0" prefWidth="239.0" style="-fx-background-color: #a39484;" text="Register">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -56,19 +56,25 @@
                         <Image url="@images/human.png" />
                     </image>
                 </ImageView>
-            <Label layoutX="10.0" layoutY="198.0" text="Password" textOverrun="CLIP">
+            <Label layoutX="10.0" layoutY="242.0" text="Password" textOverrun="CLIP">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <PasswordField layoutX="87.0" layoutY="195.0" prefHeight="25.0" prefWidth="184.0" />
-            <Label layoutX="10.0" layoutY="243.0" text="Password" textOverrun="CLIP">
+            <PasswordField layoutX="98.0" layoutY="239.0" prefHeight="25.0" prefWidth="165.0" />
+            <Label layoutX="10.0" layoutY="287.0" text="Password" textOverrun="CLIP">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <PasswordField layoutX="87.0" layoutY="240.0" prefHeight="25.0" prefWidth="184.0" />
-            <TextField layoutX="86.0" layoutY="150.0" prefHeight="25.0" prefWidth="186.0" />
+            <PasswordField layoutX="98.0" layoutY="284.0" prefHeight="25.0" prefWidth="165.0" />
+            <TextField layoutX="98.0" layoutY="150.0" prefHeight="25.0" prefWidth="165.0" />
+            <Label layoutX="4.0" layoutY="199.0" text="UserName" textOverrun="CLIP">
+               <font>
+                  <Font name="Century" size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="98.0" layoutY="195.0" prefHeight="25.0" prefWidth="165.0" />
             </children>
         </AnchorPane>
     </right>
