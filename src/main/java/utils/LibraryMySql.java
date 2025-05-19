@@ -2,6 +2,7 @@
 package utils;
 import com.example.bibliotheque.Model.Auteur;
 import com.example.bibliotheque.Model.Livre;
+import com.example.bibliotheque.Model.User;
 //import org.apache.commons.codec.digest.DigestUtils;
 import java.sql.*;
 import java.util.ArrayList;
@@ -36,15 +37,30 @@ public class LibraryMySql {
         if(connection == null || connection.isClosed()) return;
         connection.close();
     }
-    public void createAdmin(String userName, String password) throws SQLException {
-        createMySqlUser(userName, password, "%");
-        garantePrivilageToMySqlUser(userName, password, "ALL PRIVILEGES");
+    //Insertion dans la table user de la bd SQL
+    public void createUserInDb(User user) throws SQLException {
+        // 1. Insertion dans ta table utilisateurs (la table correspondante à User)
+        String sql = "INSERT INTO utilisateurs (login, nom, firstName, mot_de_passe, role) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, user.getLogin());
+            ps.setString(2, user.getNom());
+            ps.setString(3, user.getFirstName());
+            ps.setString(4, user.getMotDePasse()); // idéalement hashé
+            ps.setString(5, user.getRole().name()); // récupère "ADMIN" ou "USER"
+            ps.executeUpdate();
+        }
+
+        // 2. Création du compte MySQL (facultatif, uniquement si on veut gérer les privilèges MySQL)
+        createMySqlUser(user.getLogin(), user.getMotDePasse(), "%");
+
+        // 3. Attribution des privilèges
+        if (user.getRole() == User.Role.ADMIN) {
+            grantPrivileges(user.getLogin(), "ALL PRIVILEGES");
+        } else {
+            grantPrivileges(user.getLogin(), "SELECT");
+        }
     }
-    public void createUser(String userName, String password) throws SQLException {
-        createMySqlUser(userName, password, "%");
-        garantePrivilageToMySqlUser(userName, password, "SELECT");
-        //String q = DigestUtils.sha1Hex("");
-    }
+
     public void createMySqlUser(String userName, String password, String host) throws SQLException {
         if(connection == null || connection.isClosed()) return;
 
@@ -56,12 +72,12 @@ public class LibraryMySql {
         statement.execute();
         statement.close();
     }
-    public void garantePrivilageToMySqlUser(String userName, String host, String privilage) throws SQLException {
+    public void garantePrivilageToMySqlUser(String userName, String host, String privilege) throws SQLException {
         if(connection == null || connection.isClosed()) return;
 
         String sqlQuery = "GRANT ? ON *.* TO ?@?;";
         PreparedStatement statement = connection.prepareStatement(sqlQuery);
-        statement.setString(1, privilage);
+        statement.setString(1, privilege);
         statement.setString(2, userName);
         statement.setString(3, host);
         statement.execute();

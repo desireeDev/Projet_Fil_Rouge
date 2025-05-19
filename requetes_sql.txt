@@ -43,12 +43,18 @@ CREATE TABLE `projet_fil_rouge`.`livres` (
     ON UPDATE NO ACTION);
 
 CREATE TABLE `projet_fil_rouge`.`utilisateurs` (
-  `id_utilisateurs` INT NOT NULL AUTO_INCREMENT,
-  `utilisateur_name` VARCHAR(45) NOT NULL,
-  `prenom` VARCHAR(45) NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `login ` VARCHAR(45) NOT NULL,
   `nom` VARCHAR(45) NOT NULL,
-  `mail` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_utilisateurs`),
-  UNIQUE INDEX `utilisateur_name_UNIQUE` (`utilisateur_name` ASC) VISIBLE,
-  UNIQUE INDEX `mail_UNIQUE` (`mail` ASC) VISIBLE);
+  `firstName` VARCHAR(45) NOT NULL,
+  `motDePasse` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `login_UNIQUE` (`utilisateur_name` ASC) VISIBLE,
+   role ENUM('ADMIN', 'USER') NOT NULL
+   );
+
+   CREATE TABLE 'profil_fil_rouge'.'emprunteur'(
+   'id' INT NOT NULL PRIMARY KEY,
+    'name' VARCHAR(45) NOT NULL,
+    'firstName' VARCHAR(45) NOT NULL,
+    );

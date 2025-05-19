@@ -11,9 +11,9 @@ public class User {
     //Définition des attributs
     private final IntegerProperty id;
     private final StringProperty login;
-    private final StringProperty motDePasse;
     private final StringProperty nom;
-    private final StringProperty email;
+    private final StringProperty firstName;
+    private final StringProperty motDePasse;
     private final ObjectProperty<Role> role;
     //Définition des roles
     public enum Role {
@@ -25,17 +25,17 @@ public class User {
         login = new SimpleStringProperty(this, "login");
         motDePasse = new SimpleStringProperty(this, "motDePasse");
         nom = new SimpleStringProperty(this, "nom");
-        email = new SimpleStringProperty(this, "email");
+        firstName = new SimpleStringProperty(this, "firstName");
         role = new SimpleObjectProperty<>(this, "role");
     }
 //Définition d'un constructeur non vide
-    public User(int id, String login, String motDePasse, String nom, String email, Role role) {
+    public User(int id, String login, String motDePasse, String nom, String firstName, Role role) {
         this();
         this.id.set(id);
         this.login.set(login);
         this.motDePasse.set(motDePasse);
         this.nom.set(nom);
-        this.email.set(email);
+        this.firstName.set(firstName);
         this.role.set(role);
     }
 
@@ -60,9 +60,9 @@ public class User {
     public StringProperty nomProperty() { return nom; }
 
     // Getters, setters et property pour email
-    public String getEmail() { return email.get(); }
-    public void setEmail(String email) { this.email.set(email); }
-    public StringProperty emailProperty() { return email; }
+    public String getFirstName() { return firstName.get(); }
+    public void setFirstName(String firstName) { this.firstName.set(firstName); }
+    public StringProperty FirstNameProperty() { return firstName; }
 
     // Getters, setters et property pour role
     public Role getRole() { return role.get(); }
@@ -75,7 +75,7 @@ public class User {
                 "id=" + getId() +
                 ", login=" + getLogin() +
                 ", nom=" + getNom() +
-                ", email=" + getEmail() +
+                ", firstName=" + getFirstName() +
                 ", role=" + getRole() +
                 '}';
     }
