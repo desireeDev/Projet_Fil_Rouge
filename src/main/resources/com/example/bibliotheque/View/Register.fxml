@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="644.0" style="-fx-background-color: #a39484;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="644.0" style="-fx-background-color: #a39484;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotheque.Controller.UserController">
     <left>
         <AnchorPane prefHeight="504.0" prefWidth="520.0" style="-fx-background-color: #a39484;" BorderPane.alignment="TOP_LEFT">
             <children>
@@ -36,13 +36,12 @@
                         <Font name="Century" size="14.0" />
                     </font>
                 </Label>
-                <PasswordField layoutX="87.0" layoutY="150.0" prefHeight="25.0" prefWidth="184.0" />
                 <Button layoutX="29.0" layoutY="365.0" mnemonicParsing="false" onAction="#onConnect" prefHeight="32.0" prefWidth="239.0" style="-fx-background-color: #a39484;" text="Login">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Button>
-                <Button layoutX="29.0" layoutY="302.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="239.0" style="-fx-background-color: #a39484;" text="Register">
+                <Button layoutX="29.0" layoutY="302.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="32.0" prefWidth="239.0" style="-fx-background-color: #a39484;" text="Register">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -69,6 +68,7 @@
                </font>
             </Label>
             <PasswordField layoutX="87.0" layoutY="240.0" prefHeight="25.0" prefWidth="184.0" />
+            <TextField layoutX="86.0" layoutY="150.0" prefHeight="25.0" prefWidth="186.0" />
             </children>
         </AnchorPane>
     </right>

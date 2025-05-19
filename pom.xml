@@ -14,6 +14,10 @@
         <maven.compiler.target>17</maven.compiler.target>
         <junit.version>5.10.2</junit.version>
         <javafx.version>23.0.1</javafx.version>
+        <javafx.platform>linux</javafx.platform>
+        <!--   <sonar.projectKey>my_project_key</sonar.projectKey>
+           <sonar.organization>my_organization</sonar.organization>
+           <sonar.host.url>https://sonarcloud.io</sonar.host.url>-->
     </properties>
 
     <dependencies>

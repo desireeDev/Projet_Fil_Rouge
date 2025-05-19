@@ -1,10 +1,8 @@
-/*
-package utils;
 
+package utils;
 import com.example.bibliotheque.Model.Auteur;
 import com.example.bibliotheque.Model.Livre;
 //import org.apache.commons.codec.digest.DigestUtils;
-
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -14,7 +12,6 @@ import java.util.ArrayList;
 //LibraryMySql qs = new LibraryMySql("127.0.0.1","projet_fil_rouge", "root", "password");
 //sinon en théorie le script a créé deux utilisateurs, un admin avec tous les ptn de privileges, un simple qui peut juste select
 //il y a pleins de méthodes pour la gestion des utilisateurs de la db mysql, mais en vrai, on en a pas besoin, vu qu'on a notre table utilisateurs
-
 //j'avais des erreurs à cause du xml si je rajoutais un getter et un setter dans Auteur et Livres,
 // du coup j'ai rajouté deux methodes à la con equivalents : mettreIdBiblioteque et avoirIdBiblioteque
 // c'était juste pour mes testes; Aterme faut remplacer avec des vrais getter et setter
@@ -109,17 +106,17 @@ public class LibraryMySql {
         }
         return livresList;
     }
+}
 
-    */
+
 /**
      * Efface toutes les anciennes données
      * @param livres
      * @throws SQLException
-     *//*
+     */
 
     public  void setLivres(Livre[] livres) throws SQLException {
         if(connection == null || connection.isClosed()) return;
-
         int idAuteur;
         String truncateQuery = "SET FOREIGN_KEY_CHECKS = 0; ";
         // à quoi sert la dernière ligne un peu chelou ? bah lisez ce truc https://stackoverflow.com/questions/778534/mysql-on-duplicate-key-last-insert-id
@@ -133,10 +130,9 @@ public class LibraryMySql {
         PreparedStatement psTruncate = connection.prepareStatement(truncateQuery);
         PreparedStatement psAuteur = connection.prepareStatement(auteursQuery, Statement.RETURN_GENERATED_KEYS);
         PreparedStatement psLivre;
-
         //on desactive le controle des clefs etrangeres, parce que sinon le moteur de la database te fait tout un scandale
         //si t'essaye d'affacer des lignes avec à l'interieur des clefs etrangeres, même si la table de base est vide
-        psTruncate.execute("SET FOREIGN_KEY_CHECKS = 0;");
+    psTruncate.execute("SET FOREIGN_KEY_CHECKS = 0;");
         //bim bam boum, on vide les tables
         psTruncate.execute("TRUNCATE TABLE livres;");
         psTruncate.execute("TRUNCATE TABLE auteurs;");
@@ -176,12 +172,12 @@ public class LibraryMySql {
         psLivre.executeUpdate();
     }
 
-    */
+
 /**
      * Ne met à jour que les livres modifiés et les nouveaux livres
      * @param livres
      * @throws SQLException
-     *//*
+     */
 
     public  void setLivresModifies(Livre[] livres) throws SQLException {
 
@@ -207,10 +203,10 @@ public class LibraryMySql {
         resultLivres.next();
         idAuteur = resultLivres.getInt(1);
 
-        //while (resultLivres.next()) {
-        //    idAuteur = resultLivres.getInt("id_auteur");
-        //}
-        //psAuteur.setInt(1, livre.getAuteur().avoirIdBiblioteque());
+        while (resultLivres.next()) {
+           idAuteur = resultLivres.getInt("id_auteur");
+        }
+        psAuteur.setInt(1, livre.getAuteur().avoirIdBiblioteque());
         psLivre.setString(1, livre.getTitre());
         psLivre.setString(2, livre.getPresentation());
         psLivre.setInt(3, livre.getParution());
@@ -239,9 +235,7 @@ public class LibraryMySql {
         ResultSet rs = psAuteur.getGeneratedKeys();
         rs.next();
         idAuteur = rs.getInt(1);
-
         PreparedStatement psLivre = connection.prepareStatement(livreQuery);
-
         psLivre.setInt(1, livre.avoirIdBiblioteque());
         psLivre.setString(2, livre.getTitre());
         psLivre.setString(3, livre.getPresentation());
@@ -252,4 +246,3 @@ public class LibraryMySql {
         psLivre.executeUpdate();
     }
 }
-*/
