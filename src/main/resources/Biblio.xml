@@ -4,13 +4,10 @@
     <livre>
         <id>1</id>
         <auteur>
-
+            <id>1</id>
             <nom>Rousseau</nom>
-
             <prenom>Simon</prenom>
-
         </auteur>
-
 
         <colonne>1</colonne>
 
@@ -26,12 +23,9 @@
 
         <presentation>Une version sombre et sanglante du conte classique où l’amour et la monstruosité s’entrelacent dans une atmosphère macabre.</presentation>
 
-
         <rangee>1</rangee>
 
-
         <titre>La Belle et la Bête: Les contes interdits</titre>
-
 
     </livre>
 

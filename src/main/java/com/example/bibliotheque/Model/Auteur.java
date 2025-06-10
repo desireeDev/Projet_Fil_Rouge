@@ -3,8 +3,8 @@ package com.example.bibliotheque.Model;
 import jakarta.xml.bind.annotation.XmlElement;
 // Importation de l'annotation pour définir l'ordre des propriétés dans le XML
 import jakarta.xml.bind.annotation.XmlType;
-
 // Importation de la classe SimpleStringProperty utilisée pour la gestion des propriétés observables
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 // Importation de la classe StringProperty pour lier les propriétés du modèle avec l'interface
@@ -15,9 +15,10 @@ import javafx.beans.property.StringProperty;
  * Utilisation de JavaFX Properties pour la gestion de données dynamiques dans l'interface graphique.
  */
 // Définit l'ordre des éléments dans la sérialisation XML (nom d'abord, puis prénom)
-@XmlType(propOrder = {"nom", "prenom"})
+@XmlType(propOrder = {"id","nom", "prenom"})
 public class Auteur {
     // Déclaration des propriétés observables pour le nom et le prénom de l'auteur
+    private final SimpleIntegerProperty id= new SimpleIntegerProperty();
     private final SimpleStringProperty nom = new SimpleStringProperty();
     private final SimpleStringProperty prenom = new SimpleStringProperty();
 
@@ -26,6 +27,14 @@ public class Auteur {
      * Utilisé lors de la sérialisation XML grâce à l'annotation @XmlElement.
      * @return La valeur actuelle de la propriété `nom`.
      */
+    @XmlElement(name = "id")
+    public Integer getId() {
+        return id.get();  // Retourne la valeur actuelle de la propriété `nom`
+    }
+    public void setid(Integer id) {
+        this.id.set(id);  // Met à jour la valeur de la propriété `nom`
+    }
+
     @XmlElement(name = "nom")
     public String getNom() {
         return nom.get();  // Retourne la valeur actuelle de la propriété `nom`

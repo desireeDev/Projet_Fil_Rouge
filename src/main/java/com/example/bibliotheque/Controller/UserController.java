@@ -7,6 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
+
 
 import java.io.IOException;
 public class UserController {
