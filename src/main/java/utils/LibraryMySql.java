@@ -17,7 +17,7 @@ import java.util.ArrayList;
 // du coup j'ai rajouté deux methodes à la con equivalents : mettreIdBiblioteque et avoirIdBiblioteque
 // c'était juste pour mes testes; Aterme faut remplacer avec des vrais getter et setter
 // (surtout que vu l'etat de mon commit ça ne marche pas mdr)
-
+//test
 public class LibraryMySql {
     private Connection connection = null;
     public LibraryMySql() {}
