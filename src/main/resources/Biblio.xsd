@@ -6,6 +6,7 @@
                 <xs:element maxOccurs="unbounded" name="livre">
                     <xs:complexType>
                         <xs:sequence>
+                            <xs:element name="id" type="xs:unsignedShort" />
                             <xs:element name="titre" type="xs:string" />
                             <xs:element name="auteur">
                                 <xs:complexType>

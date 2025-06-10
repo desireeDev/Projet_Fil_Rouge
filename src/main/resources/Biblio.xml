@@ -1,18 +1,13 @@
 <?xml version="1.0" ?>
 <bibliotheque>
 
-
     <livre>
-
-
+        <id>1</id>
         <auteur>
-
 
             <nom>Rousseau</nom>
 
-
             <prenom>Simon</prenom>
-
 
         </auteur>
 
@@ -43,7 +38,7 @@
 
     <livre>
 
-
+        <id>2</id>
         <auteur>
 
 
@@ -83,6 +78,7 @@
     <livre>
 
 
+        <id>3</id>
         <auteur>
 
 
@@ -122,6 +118,7 @@
     <livre>
 
 
+        <id>4</id>
         <auteur>
 
 
@@ -160,7 +157,7 @@
 
     <livre>
 
-
+        <id>5</id>
         <auteur>
 
 
@@ -200,6 +197,7 @@
     <livre>
 
 
+        <id>6</id>
         <auteur>
 
 
@@ -239,6 +237,7 @@
     <livre>
 
 
+        <id>7</id>
         <auteur>
 
 
@@ -277,7 +276,7 @@
 
     <livre>
 
-
+        <id>8</id>
         <auteur>
 
 
@@ -315,6 +314,7 @@
 
 
     <livre>
+        <id>9</id>
         <auteur>
             <nom>Alain</nom>
             <prenom>Sonia</prenom>
@@ -341,6 +341,7 @@
         <titre>Les 3 P'tits Cochons: Les contes interdits</titre>
     </livre>
     <livre>
+        <id>10</id>
         <auteur>
             <nom>Sicard</nom>
             <prenom>Louis-Pier</prenom>
@@ -354,6 +355,7 @@
         <titre>Scrooge: Les contes interdits</titre>
     </livre>
     <livre>
+        <id>11</id>
         <auteur>
             <nom>Johnson</nom>
             <prenom>Sylvain</prenom>
@@ -367,6 +369,7 @@
         <titre>Le Vilain Petit Canard: Les contes interdits</titre>
     </livre>
     <livre>
+        <id>12</id>
         <auteur>
             <nom>Godbout</nom>
             <prenom>Yvan</prenom>
@@ -380,6 +383,7 @@
         <titre>Hansel et Gretel: Les contes interdits</titre>
     </livre>
     <livre>
+        <id>13</id>
         <auteur>
             <nom>Royer</nom>
             <prenom>Maude</prenom>
@@ -393,6 +397,7 @@
         <titre>Peau d'Âne: Les contes interdits</titre>
     </livre>
     <livre>
+        <id>14</id>
         <auteur>
             <nom>Maude</nom>
             <prenom>Rückstühl</prenom>
@@ -406,6 +411,7 @@
         <titre>Rumpelstiltskin: Les contes interdits</titre>
     </livre>
     <livre>
+        <id>15</id>
         <auteur>
             <nom>Boivin</nom>
             <prenom>Christian</prenom>
@@ -419,6 +425,7 @@
         <titre>Le Vilain Petit Canard: Les contes interdits</titre>
     </livre>
     <livre>
+        <id>16</id>
         <auteur>
             <nom>Bédard</nom>
             <prenom>David</prenom>
@@ -432,6 +439,7 @@
         <titre>Aladin: Les contes interdits</titre>
     </livre>
     <livre>
+        <id>17</id>
         <auteur>
             <nom>Laflamme</nom>
             <prenom>Steve</prenom>
@@ -445,6 +453,7 @@
         <titre>Barbe Bleue: Les contes interdits</titre>
     </livre>
     <livre>
+        <id>18</id>
         <auteur>
             <nom>Verdier</nom>
             <prenom>Vic</prenom>
@@ -458,6 +467,7 @@
         <titre>Jack et le Haricot Magique: Les contes interdits</titre>
     </livre>
     <livre>
+        <id>19</id>
         <auteur>
             <nom>Thériault</nom>
             <prenom>Gabriel</prenom>
@@ -471,6 +481,7 @@
         <titre>La Chasse-Galerie: Les contes interdits</titre>
     </livre>
     <livre>
+        <id>20</id>
         <auteur>
             <nom>Johnson</nom>
             <prenom>Sylvain</prenom>
@@ -484,6 +495,7 @@
         <titre>Le Livre de la Jungle: Les contes interdits</titre>
     </livre>
     <livre>
+        <id>21</id>
         <auteur>
             <nom>Royer</nom>
             <prenom>Maude</prenom>
@@ -497,6 +509,7 @@
         <titre>Pinocchio: Les contes interdits</titre>
     </livre>
     <livre>
+        <id>22</id>
         <auteur>
             <nom>Rousseau</nom>
             <prenom>Simon</prenom>
