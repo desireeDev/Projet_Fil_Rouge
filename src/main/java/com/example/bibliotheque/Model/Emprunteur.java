@@ -17,7 +17,6 @@ public class Emprunteur {
     private final SimpleStringProperty prenomEmprunteur = new SimpleStringProperty(); // Prénom de l'emprunteur
     private final ObjectProperty<LocalDate> dateEmprunt = new SimpleObjectProperty<>(); // Date d'emprunt
     private final ObjectProperty<LocalDate> dateRendu = new SimpleObjectProperty<>(); // Date prévue de retour
-
     @XmlElement(name = "nom") // Mappe le champ "nom" à l'élément <nom> dans le fichier XML
     public String getNom() {
         return nomEmprunteur.get();

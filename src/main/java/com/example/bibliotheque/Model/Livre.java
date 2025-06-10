@@ -9,6 +9,7 @@ import javafx.beans.property.*; // Propriétés observables JavaFX pour la liais
 public class Livre {
 
     // Définition des propriétés JavaFX pour la liaison des données avec l'interface utilisateur
+    private final SimpleStringProperty id= new SimpleStringProperty() ;
     private final SimpleStringProperty titre = new SimpleStringProperty(); // Titre du livre
     private final SimpleStringProperty presentation = new SimpleStringProperty();
     private final SimpleIntegerProperty parution = new SimpleIntegerProperty();
@@ -19,7 +20,18 @@ public class Livre {
     // Date prévue de retour
     private Auteur auteur; // Auteur du livre (objet séparé pour gérer les informations de l'auteur)
     private Emprunteur emprunteur;
-
+    //id
+    @XmlElement(name = "id")
+    public String getId() {
+        return id.get(); // Retourne la valeur de la propriété titre
+    }
+    public void setid(String id) {
+        this.id.set(id); // Définit la valeur de la propriété titre
+    }
+    public SimpleStringProperty idProperty() {
+        return id;
+    }
+    //titre
     @XmlElement(name = "titre") // Mappe le champ "titre" à l'élément <titre> dans le fichier XML
     public String getTitre() {
         return titre.get(); // Retourne la valeur de la propriété titre

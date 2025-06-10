@@ -20,7 +20,6 @@ module com.example.bibliotheque {
     requires org.apache.poi.ooxml.schemas;
     requires mysql.connector.j;
     requires java.sql;
-    requires org.apache.commons.codec;
 
     opens com.example.bibliotheque to javafx.fxml;
     exports com.example.bibliotheque;

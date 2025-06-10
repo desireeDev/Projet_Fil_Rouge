@@ -9,8 +9,14 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
-
 public class UserController {
+
+/*
+    @FXML
+    private void onClose (ActionEvent event){
+        Stage stage=(Stage)close.getScene().getWindow();
+        stage.close();
+    }*/
 
     @FXML
     private void onConnect(ActionEvent event) {
