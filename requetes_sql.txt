@@ -50,7 +50,6 @@ CREATE TABLE `projet_fil_rouge`.`utilisateurs` (
   UNIQUE INDEX `login_UNIQUE` (`utilisateur_name` ASC) VISIBLE,
    role ENUM('ADMIN', 'USER') NOT NULL
    );
-
 CREATE TABLE `projet_fil_rouge`.`emprunteur`(
    `id_emprunteur` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(45) NOT NULL,

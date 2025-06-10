@@ -5,6 +5,7 @@ import com.example.bibliotheque.Model.Livre;
 import com.example.bibliotheque.Model.Auteur;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -42,6 +43,7 @@ public class BibliothequeController {
         return tableView;
     }
     //Define the column of tableView
+    @FXML private TableColumn<Livre,String> idColumn;
     @FXML private TableColumn<Livre, String> titleColumn;
     @FXML private TableColumn<Livre, String> authorColumn;
     @FXML private TableColumn<Livre, String> presentationColumn;
@@ -100,10 +102,11 @@ public BibliothequeController() {
     //Liaison des données
     //sellCellValueFactory permet de lier chaque column à son attribut correspondant dans la table Livre
     //PropertyValueFactory  lie la propriété de l'objet Livre  à une colonne du TableView.
+        idColumn.setCellValueFactory(new PropertyValueFactory<Livre,String>("id"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<Livre,String>("titre"));
         authorColumn.setCellValueFactory(cellData -> {
             Auteur auteur = cellData.getValue().getAuteur();
-            return new javafx.beans.property.SimpleStringProperty(auteur.getNom() + " " + auteur.getPrenom());
+            return new SimpleStringProperty(auteur.getNom() + " " + auteur.getPrenom());
         });
         presentationColumn.setCellValueFactory(new PropertyValueFactory<>("presentation"));
         parutionColumn.setCellValueFactory(new PropertyValueFactory<>("parution"));
@@ -114,7 +117,7 @@ public BibliothequeController() {
         statutColumn.setCellValueFactory(cellData -> {
             boolean emprunte = cellData.getValue().isEmprunte();
 
-            return new javafx.beans.property.SimpleStringProperty(emprunte ? "Indisponible" : "Disponible");
+            return new SimpleStringProperty(emprunte ? "Indisponible" : "Disponible");
         });
 
         ChargerBibliothequeAView(bibliotheque);

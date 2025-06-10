@@ -57,6 +57,7 @@
     <!-- Tableau d'affichage des livres -->
     <TableView fx:id="tableView" style="-fx-border-color: #154c79; -fx-border-radius: 10px;">
         <columns>
+            <TableColumn fx:id="idColumn" text="Numéro" />
             <TableColumn fx:id="titleColumn" text="Titre" />
             <TableColumn fx:id="authorColumn" text="Auteur" />
             <TableColumn fx:id="presentationColumn" text="Présentation" />
