@@ -43,7 +43,7 @@ public class BibliothequeController {
         return tableView;
     }
     //Define the column of tableView
-    @FXML private TableColumn<Livre,String> idColumn;
+    @FXML private TableColumn<Livre,Integer> idColumn;
     @FXML private TableColumn<Livre, String> titleColumn;
     @FXML private TableColumn<Livre, String> authorColumn;
     @FXML private TableColumn<Livre, String> presentationColumn;
@@ -102,7 +102,7 @@ public BibliothequeController() {
     //Liaison des données
     //sellCellValueFactory permet de lier chaque column à son attribut correspondant dans la table Livre
     //PropertyValueFactory  lie la propriété de l'objet Livre  à une colonne du TableView.
-        idColumn.setCellValueFactory(new PropertyValueFactory<Livre,String>("id"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<Livre,String>("titre"));
         authorColumn.setCellValueFactory(cellData -> {
             Auteur auteur = cellData.getValue().getAuteur();
