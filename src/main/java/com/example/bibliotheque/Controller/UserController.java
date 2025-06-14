@@ -12,8 +12,9 @@ import javafx.scene.control.PasswordField;
 
 
 import java.io.IOException;
-public class UserController {
+import java.sql.DriverManager;
 
+public class UserController {
 /*
     @FXML
     private void onClose (ActionEvent event){
