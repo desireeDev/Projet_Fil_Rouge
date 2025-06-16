@@ -31,7 +31,7 @@ public class Auteur {
     public Integer getId() {
         return id.get();  // Retourne la valeur actuelle de la propriété `nom`
     }
-    public void setid(Integer id) {
+    public void setId(Integer id) {
         this.id.set(id);  // Met à jour la valeur de la propriété `nom`
     }
 
