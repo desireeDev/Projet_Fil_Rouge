@@ -3,6 +3,7 @@ package com.example.bibliotheque.Model;
 import javafx.beans.property.*;
 
 public class User {
+    private final SimpleIntegerProperty id =new SimpleIntegerProperty();
     private final StringProperty login = new SimpleStringProperty();
     private final StringProperty nom = new SimpleStringProperty();
     private final StringProperty firstName = new SimpleStringProperty();
@@ -18,7 +19,8 @@ public class User {
         // Constructeur vide (nécessaire pour les bindings FXML, etc.)
     }
 
-    public User(String login, String nom, String firstName, String motDePasse, Role role) {
+    public User( Integer id,String login, String nom, String firstName, String motDePasse, Role role) {
+        this.id.set(id);
         this.login.set(login);
         this.nom.set(nom);
         this.firstName.set(firstName);
@@ -27,6 +29,9 @@ public class User {
     }
 
     // Getters et setters avec propriétés JavaFX
+    public Integer getId() {
+        return id.get();
+    }
     public String getLogin() {
         return login.get();
     }

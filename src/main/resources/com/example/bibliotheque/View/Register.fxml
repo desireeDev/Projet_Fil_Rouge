@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="644.0" style="-fx-background-color: #a39484;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotheque.Controller.UserController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="644.0" style="-fx-background-color: #a39484;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotheque.Controller.RegisterController">
     <left>
         <AnchorPane prefHeight="504.0" prefWidth="520.0" style="-fx-background-color: #a39484;" BorderPane.alignment="TOP_LEFT">
             <children>
@@ -24,14 +24,14 @@
         </AnchorPane>
     </left>
     <right>
-        <AnchorPane fx:id="passwordField" prefHeight="400.0" prefWidth="332.0" style="-fx-background-color: #6195b6;" BorderPane.alignment="TOP_RIGHT">
+        <AnchorPane prefHeight="400.0" prefWidth="332.0" style="-fx-background-color: #6195b6;" BorderPane.alignment="TOP_RIGHT">
             <children>
                 <Label layoutX="10.0" layoutY="107.0" text="Name" textOverrun="CLIP">
                     <font>
                         <Font name="Century" size="14.0" />
                     </font>
                 </Label>
-                <TextField fx:id="nameField" layoutX="98.0" layoutY="103.0" prefHeight="25.0" prefWidth="165.0" />
+                <TextField fx:id="registerNameField" layoutX="98.0" layoutY="103.0" prefHeight="25.0" prefWidth="165.0" />
                 <Label layoutX="4.0" layoutY="154.0" text="FirstName" textOverrun="CLIP">
                     <font>
                         <Font name="Century" size="14.0" />
@@ -62,21 +62,21 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <PasswordField fx:id="passwordField" layoutX="98.0" layoutY="239.0" prefHeight="25.0" prefWidth="165.0" />
+            <PasswordField fx:id="registerPasswordField" layoutX="98.0" layoutY="239.0" prefHeight="25.0" prefWidth="165.0" />
             <Label layoutX="12.0" layoutY="299.0" text="Retype Pass" textOverrun="CLIP">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <PasswordField fx:id="repasswordField" layoutX="98.0" layoutY="284.0" prefHeight="25.0" prefWidth="165.0" />
-            <TextField fx:id="firstNameField" layoutX="98.0" layoutY="150.0" prefHeight="25.0" prefWidth="165.0" />
+            <PasswordField fx:id="registerRepasswordField" layoutX="98.0" layoutY="284.0" prefHeight="25.0" prefWidth="165.0" />
+            <TextField fx:id="registerFirstNameField" layoutX="98.0" layoutY="150.0" prefHeight="25.0" prefWidth="165.0" />
             <Label layoutX="4.0" layoutY="199.0" text="UserName" textOverrun="CLIP">
                <font>
                   <Font name="Century" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="userField" layoutX="98.0" layoutY="195.0" prefHeight="25.0" prefWidth="165.0" />
-            <ComboBox fx:id="comb" editable="true" layoutX="99.0" layoutY="339.0" prefHeight="25.0" prefWidth="165.0" promptText="Select" />
+            <TextField fx:id="registerUserField" layoutX="98.0" layoutY="195.0" prefHeight="25.0" prefWidth="165.0" />
+            <ComboBox fx:id="registerRoleComboBox" editable="true" layoutX="99.0" layoutY="339.0" prefHeight="25.0" prefWidth="165.0" promptText="Select" />
             <Label layoutX="8.0" layoutY="342.0" text="Other Account" textOverrun="CLIP" />
             </children>
         </AnchorPane>

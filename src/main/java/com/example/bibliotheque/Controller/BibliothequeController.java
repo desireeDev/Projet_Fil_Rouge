@@ -30,19 +30,16 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 import utils.BookExporter;
-//import utils.LibraryMySql;
+import utils.DatabaseConnection;
 
 public class BibliothequeController {
-    //public MenuItem itemOuvrir;
-    //Define the tableColumns who contains the elements
-    //FXML to lier les elements definis dans la vue au controleur java
-    //Definition of tableau who shows les objets de type Livre
+     // TableView affichant la liste des livres
     @FXML private TableView<Livre> tableView;
-//Getter pour la récupération vu que tableView est déclaré private
+
     public TableView<Livre> getTableView() {
         return tableView;
     }
-    //Define the column of tableView
+    // Colonnes du tableau, liées aux propriétés de Livre
     @FXML private TableColumn<Livre,Integer> idColumn;
     @FXML private TableColumn<Livre, String> titleColumn;
     @FXML private TableColumn<Livre, String> authorColumn;
@@ -53,7 +50,7 @@ public class BibliothequeController {
     @FXML private TableColumn<Livre, String> pathImageColumn;
     @FXML  private TableColumn<Livre, String> statutColumn;
     @FXML private TableColumn<Livre, Void> actionsColumn;
-//TextField=Champs de saisie des attributs
+    // Champs de saisie pour l'ajout/modification d'un livre
     @FXML private TextField titreField;
     @FXML private TextField nomField;
     @FXML private TextField prenomField;
@@ -63,22 +60,21 @@ public class BibliothequeController {
     @FXML private TextField rangeeField;
     @FXML private TextField pathImageField;
     @FXML private Label errorLabel;
+    // MenuItems pour sauvegarde
     @FXML private MenuItem saveMenuItem;
     @FXML private MenuItem saveAsMenuItem;
     // CheckBox pour indiquer si le livre est emprunté
     @FXML private CheckBox emprunteCheckBox;
-    @FXML private Emprunteur emprunteurTemporaire = null; // Stockage temporaire de l'emprunteur
-    @FXML private boolean empruntValide = false; // Indique si le formulaire a été validé
+    @FXML private Emprunteur emprunteurTemporaire = null;
+    // Indique si le formulaire a été validé
+    @FXML private boolean empruntValide = false;
 
     private String xmlFilePath = "src/main/resources/Biblio.xml";
 
-    // Déclaration et initialisation d'une liste observable de type Livre.
-// FXCollections.observableArrayList() crée une liste dynamique qui
-// surveille les modifications apportées à son contenu (ajouts, suppressions, modifications).
-// Cette liste sera  utilisée ici  pour alimenter la TableView et mettre à jour automatiquement notre interface user(View).
+    // Liste observable des livres, utilisée pour alimenter la TableView et mettre à jour l'interface automatiquement
 private ObservableList<Livre> livresObservable = FXCollections.observableArrayList();
 
-//Objet who contains la collection(ensemble) des livres
+   // Objet Bibliotheque contenant la collection des livres
     private Bibliotheque bibliotheque;
 //Désérialisation du fichier XML
 // JAXB and Unmarshaller seront Utilisés pour lire notre  fichier XML et charger les données dans l'objet bibliotheque.
@@ -96,12 +92,15 @@ public BibliothequeController() {
         e.printStackTrace();
     }
 }
-//FXML pour faire la liason entre la vue et le controller
+  //FXML pour faire la liason entre la vue et le controller
     @FXML
+    /**
+     * Méthode d'initialisation appelée automatiquement après le chargement du FXML.
+     * Configure la liaison des colonnes avec les propriétés des livres,
+     * charge la bibliothèque dans la TableView et ajoute la colonne d'actions.
+     */
     public void initialize() {
-    //Liaison des données
-    //sellCellValueFactory permet de lier chaque column à son attribut correspondant dans la table Livre
-    //PropertyValueFactory  lie la propriété de l'objet Livre  à une colonne du TableView.
+
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<Livre,String>("titre"));
         authorColumn.setCellValueFactory(cellData -> {
@@ -162,7 +161,7 @@ public BibliothequeController() {
         System.out.println("Voulez vous exportez!");
 
         try {
-            //LibraryMySql qs = new LibraryMySql("jdbc:mysql://127.0.0.1:3306/ProjetFilRouge", "root", "password");
+            DatabaseConnection qs = new DatabaseConnection("jdbc:mysql://127.0.0.1:3306/projet_fil-rouge", "root", "root");
 
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Exporter");
@@ -312,6 +311,7 @@ public BibliothequeController() {
     @FXML
     //****Conception de la fonction addLivre***//
     public void ajouterLivre() {
+
         errorLabel.setText("");
         // ✅ Validation des champs vides
         if (titreField.getText().trim().isEmpty() || nomField.getText().trim().isEmpty() ||
