@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.SepiaTone?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -31,13 +32,19 @@
                   <Font name="Century" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="loginUserField" layoutX="87.0" layoutY="105.0" prefHeight="25.0" prefWidth="186.0" />
+            <TextField fx:id="loginUserField" layoutX="87.0" layoutY="105.0" prefHeight="25.0" prefWidth="186.0">
+               <effect>
+                  <SepiaTone />
+               </effect></TextField>
             <Label layoutX="14.0" layoutY="158.0" text="Password" textOverrun="CLIP">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <PasswordField fx:id="loginPasswordField" layoutX="87.0" layoutY="156.0" prefHeight="25.0" prefWidth="186.0" />
+            <PasswordField fx:id="loginPasswordField" layoutX="87.0" layoutY="156.0" prefHeight="25.0" prefWidth="186.0">
+               <effect>
+                  <SepiaTone />
+               </effect></PasswordField>
             <Button fx:id="connectButton" layoutX="29.0" layoutY="213.0" mnemonicParsing="false" onAction="#onConnect" prefHeight="32.0" prefWidth="239.0" style="-fx-background-color: #a39484;" text="Login" textOverrun="CLIP">
                <font>
                   <Font name="System Bold" size="14.0" />
