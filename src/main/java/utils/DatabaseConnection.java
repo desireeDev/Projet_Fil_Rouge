@@ -2,6 +2,9 @@ package utils;
 
 import java.sql.*;  // Import des classes pour la gestion de la base de données JDBC
 
+import com.example.bibliotheque.Model.Auteur;
+import com.example.bibliotheque.Model.Livre;
+import com.example.bibliotheque.Model.Emprunteur;
 
 /**
  * Classe utilitaire pour gérer la connexion à la base de données

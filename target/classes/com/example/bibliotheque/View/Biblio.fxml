@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.bibliotheque.Controller.BibliothequeController"
+      spacing="15" stylesheets="@style.css">
+
+    <!-- Inclusion du menu -->
+    <!--<fx:include source="menu.fxml"/>-->
+    <MenuBar >
+        <Menu text="Fichier">
+            <MenuItem text="Ouvrir" fx:id="itemOuvrir" onAction="#handleOpen"/>
+            <MenuItem text="Exporter" fx:id="itemExport" onAction="#handleExport"/>
+            <MenuItem text="Quitter" fx:id="itemQuitter" onAction="#handleLeft"/>
+        </Menu>
+        <Menu text="Edition" fx:id="menuAdmin">
+            <MenuItem text="Sauvegarder" fx:id="itemSauvegarder" onAction="#handleSave"/>
+            <MenuItem text="Sauvegarder sous" fx:id="itemSauvegarderSous" onAction="#handleSaveAs"/>
+        </Menu>
+        <Menu text="About">
+            <MenuItem text="Infos" fx:id="itemInfos" onAction="#handleAbout"/>
+        </Menu>
+    </MenuBar>
+    <!-- Titre du formulaire -->
+    <Label text="Formulaire d'Ajout de livres" style="-fx-font-size: 22px; -fx-font-weight: bold;-fx-text-fill: #154c79" />
+
+    <!-- Formulaire d'ajout de livre -->
+    <GridPane fx:id="formulaireAjout" hgap="10" vgap="10">
+        <Label text="Titre :" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+        <TextField fx:id="titreField" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+        <Label text="Nom de l'auteur :" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+        <TextField fx:id="nomField" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+        <Label text="Prénom de l'auteur :" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+        <TextField fx:id="prenomField" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+        <Label text="Présentation :" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+        <TextField fx:id="presentationField" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+        <Label text="Date de parution :" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+        <TextField fx:id="parutionField" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+
+        <Label text="Path Image (URL) :" GridPane.rowIndex="7" GridPane.columnIndex="0" />
+        <TextField fx:id="pathImageField" GridPane.rowIndex="7" GridPane.columnIndex="1" />
+        <Label text="Colonne :" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+        <TextField fx:id="colonneField" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+
+        <Label text="Rangée :" GridPane.rowIndex="6" GridPane.columnIndex="0" />
+        <TextField fx:id="rangeeField" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+
+        <!-- Nouveau champ pour l'état emprunté -->
+        <Label text="Livre emprunté :" GridPane.rowIndex="8" GridPane.columnIndex="0" />
+        <CheckBox fx:id="emprunteCheckBox" GridPane.rowIndex="8" GridPane.columnIndex="1" onAction="#handleEmprunteCheckBox" />
+
+        <!-- Bouton Ajouter avec du style -->
+        <Button text="Ajouter" onAction="#ajouterLivre" GridPane.rowIndex="9" GridPane.columnIndex="1"
+                styleClass="submit-button"/>
+    </GridPane>
+    <!-- Message d'erreur -->
+    <Label fx:id="errorLabel" style="-fx-text-fill: red;" />
+    <!-- Tableau d'affichage des livres -->
+    <TableView fx:id="tableView" style="-fx-border-color: #154c79; -fx-border-radius: 10px;">
+        <columns>
+            <TableColumn fx:id="idColumn" text="Numéro" />
+            <TableColumn fx:id="titleColumn" text="Titre" />
+            <TableColumn fx:id="authorColumn" text="Auteur" />
+            <TableColumn fx:id="presentationColumn" text="Présentation" />
+            <TableColumn fx:id="parutionColumn" text="Parution" />
+            <TableColumn fx:id="pathImageColumn" text="Path Image" />
+            <TableColumn fx:id="colonneColumn" text="Colonne" />
+            <TableColumn fx:id="rangeeColumn" text="Rangée" />
+            <TableColumn fx:id="statutColumn" text="Statut" />
+            <TableColumn fx:id="actionsColumn" text="Actions" />
+
+        </columns>
+    </TableView>
+</VBox>

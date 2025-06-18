@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="bibliotheque">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="livre">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="id" type="xs:unsignedShort" />
+                            <xs:element name="titre" type="xs:string" />
+                            <xs:element name="auteur">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="id" type="xs:integer" />
+                                        <xs:element name="nom" type="xs:string" />
+                                        <xs:element name="prenom" type="xs:string" />
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="presentation" type="xs:string" />
+                            <xs:element name="parution" type="xs:unsignedShort" />
+                            <xs:element name="colonne" type="xs:unsignedByte" />
+                            <xs:element name="rangee" type="xs:unsignedByte" />
+                            <xs:element name="path" type="xs:string" minOccurs="0" />
+                            <xs:element name="emprunte" type="xs:boolean" minOccurs="0" /> <!-- Rendu optionnel -->
+                            <xs:element name="emprunteur" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nomEmprunteur" type="xs:string" />
+                                        <xs:element name="prenomEmprunteur" type="xs:string" />
+                                        <xs:element name="dateEmprunt" type="xs:date" />
+                                        <xs:element name="dateRendu" type="xs:date"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

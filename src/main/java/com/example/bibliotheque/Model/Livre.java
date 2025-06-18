@@ -19,7 +19,7 @@ public class Livre {
     private final SimpleBooleanProperty emprunte = new SimpleBooleanProperty(); //statut du livre
     // Date prévue de retour
     private Auteur auteur; // Auteur du livre (objet séparé pour gérer les informations de l'auteur)
-
+    private Emprunteur emprunteur;
     //id
     @XmlElement(name = "id")
     public int getId() {
@@ -66,7 +66,15 @@ public class Livre {
     public SimpleBooleanProperty emprunteProperty() {
         return emprunte;
     }
+//Emprunt
+@XmlElement(name = "emprunteur") // Mappe le champ "emprunteur" à l'élément <emprunteur> dans le fichier XML
+public Emprunteur getEmprunteur() {
+    return emprunteur;
+}
 
+    public void setEmprunteur(Emprunteur emprunteur) {
+        this.emprunteur = emprunteur;
+    }
 
     @XmlElement(name = "presentation") // Mappe le champ "presentation" à l'élément <presentation> dans le fichier XML
     public String getPresentation() {

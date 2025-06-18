@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bibliotheque>
+    <livre>
+        <auteur>
+            <id>1</id>
+            <nom>Rousseau</nom>
+            <prenom>Simon</prenom>
+        </auteur>
+        <colonne>1</colonne>
+        <emprunte>false</emprunte>
+        <id>1</id>
+        <parution>2020</parution>
+        <pathImage>https://tse3.mm.bing.net/th?id=OIP.OVWhXuoFvAt0x0hceTEvUgAAAAPid=Api</pathImage>
+        <presentation>Une version sombre et sanglante du conte classique où l’amour et la monstruosité s’entrelacent dans une atmosphère macabre.</presentation>
+        <rangee>1</rangee>
+        <titre>La Belle et la Bête: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Johnson</nom>
+            <prenom>Sylvain</prenom>
+        </auteur>
+        <colonne>2</colonne>
+        <emprunte>false</emprunte>
+        <id>2</id>
+        <parution>2021</parution>
+        <pathImage>https://tse1.mm.bing.net/th?id=OIP.FegGdfz8LdH3Q53Y4XcKwgHaLepid=Api</pathImage>
+        <presentation>Une réinterprétation horrifique de Casse-Noisette, explorant les tréfonds de l’esprit humain et les ténèbres de l’enfance.</presentation>
+        <rangee>1</rangee>
+        <titre>Casse-Noisette: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Sicard</nom>
+            <prenom>Louis-Pier</prenom>
+        </auteur>
+        <colonne>3</colonne>
+        <emprunte>false</emprunte>
+        <id>3</id>
+        <parution>2017</parution>
+        <pathImage>https://tse2.mm.bing.net/th?id=OIP.W834irJn6Tj_30uYEit1JQHaLcpid=Api</pathImage>
+        <presentation>Une descente aux enfers où Blanche-Neige n’est plus une princesse mais une âme perdue entre trahison et folie meurtrière.</presentation>
+        <rangee>1</rangee>
+        <titre>Blanche-Neige: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Rousseau</nom>
+            <prenom>Simon</prenom>
+        </auteur>
+        <colonne>4</colonne>
+        <emprunte>false</emprunte>
+        <id>4</id>
+        <parution>2017</parution>
+        <pathImage>https://tse2.mm.bing.net/th?id=OIP.4s-Y47szxGfGglZ3HR-R4gHaLcpid=Api</pathImage>
+        <presentation>Peter Pan comme vous ne l’avez jamais vu : dérangé, violent, et plongé dans un monde où l’enfance devient cauchemar éternel.</presentation>
+        <rangee>1</rangee>
+        <titre>Peter Pan: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Godbout</nom>
+            <prenom>Yvan</prenom>
+        </auteur>
+        <colonne>5</colonne>
+        <emprunte>false</emprunte>
+        <id>5</id>
+        <parution>2018</parution>
+        <pathImage>https://tse2.mm.bing.net/th?id=OIP.4VRNtrUP6UZaaaeofiuHgwAAAAPid=Api</pathImage>
+        <presentation>Une fillette égarée, une famille d’ours au passé trouble, un huis clos sauvage et psychologique entre prédateur et proie.</presentation>
+        <rangee>1</rangee>
+        <titre>Boucle d'Or: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Sicard</nom>
+            <prenom>Louis-Pier</prenom>
+        </auteur>
+        <colonne>6</colonne>
+        <emprunte>false</emprunte>
+        <id>6</id>
+        <parution>2019</parution>
+        <pathImage>https://tse1.mm.bing.net/th?id=OIP.MsHGVDC3m6n5vIAxlDNjIwHaLcpid=Api</pathImage>
+        <presentation>Dans un monde dystopique, la princesse endormie devient l'enjeu d’une guerre moderne entre manipulation génétique et espoirs humains.</presentation>
+        <rangee>1</rangee>
+        <titre>La Belle au bois dormant: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Turner</nom>
+            <prenom>Fanny</prenom>
+        </auteur>
+        <colonne>7</colonne>
+        <emprunte>false</emprunte>
+        <id>7</id>
+        <parution>2021</parution>
+        <pathImage>https://tse1.mm.bing.net/th?id=OIP.3jZkN4zPI4kEFd7aTYbItQHaLepid=Api</pathImage>
+        <presentation>L’histoire d’Elsa revisitée dans une atmosphère glaciale et cruelle où la glace conserve les secrets les plus sombres.</presentation>
+        <rangee>1</rangee>
+        <titre>La Reine des Neiges: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Johnson</nom>
+            <prenom>Sylvain</prenom>
+        </auteur>
+        <colonne>1</colonne>
+        <emprunte>false</emprunte>
+        <id>8</id>
+        <parution>2020</parution>
+        <pathImage>https://tse3.mm.bing.net/th?id=OIP._cze8UryDatcMDeO6ZL4QAHaLkpid=Api</pathImage>
+        <presentation>Une jeune femme martyrisée entre fantasmes, réalité tordue et violence psychologique. Le bal de Cendrillon n’aura jamais été aussi macabre.</presentation>
+        <rangee>2</rangee>
+        <titre>Cendrillon: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Alain</nom>
+            <prenom>Sonia</prenom>
+        </auteur>
+        <colonne>2</colonne>
+        <emprunte>false</emprunte>
+        <id>9</id>
+        <parution>2018</parution>
+        <pathImage>https://tse4.mm.bing.net/th?id=OIP.5PuUeZdduGEzUuINjdugdAHaLcpid=Api</pathImage>
+        <presentation>Une fillette qui n’a rien d’innocent, un loup plus humain que nature. Le chemin jusqu’à chez mère-grand est jonché de sang.</presentation>
+        <rangee>2</rangee>
+        <titre>Le Petit Chaperon Rouge: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Boivin</nom>
+            <prenom>Christian</prenom>
+        </auteur>
+        <colonne>3</colonne>
+        <emprunte>false</emprunte>
+        <id>0</id>
+        <parution>2017</parution>
+        <pathImage>https://tse1.mm.bing.net/th?id=OIP.KhwvP7MvNq8oTPRdr3U54AHaLcpid=Api</pathImage>
+        <presentation>Trois frères très différents, un passé trouble et un prédateur insaisissable. Une version glauque et gore de la fable bien connue.</presentation>
+        <rangee>2</rangee>
+        <titre>Les 3 P'tits Cochons: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Sicard</nom>
+            <prenom>Louis-Pier</prenom>
+        </auteur>
+        <colonne>4</colonne>
+        <emprunte>false</emprunte>
+        <id>10</id>
+        <parution>2020</parution>
+        <pathImage>https://tse3.mm.bing.net/th?id=OIP.b3zJDx5ASPSAU0XiycRr5QHaLepid=Api</pathImage>
+        <presentation>Un Noël pas comme les autres. Scrooge y est confronté à ses démons, dans une horreur psychologique glaciale.</presentation>
+        <rangee>2</rangee>
+        <titre>Scrooge: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Johnson</nom>
+            <prenom>Sylvain</prenom>
+        </auteur>
+        <colonne>5</colonne>
+        <emprunte>false</emprunte>
+        <id>11</id>
+        <parution>2018</parution>
+        <pathImage>https://tse2.mm.bing.net/th?id=OIP.D9XYKQJwDnR4P-UfG1vbjwHaLcpid=Api</pathImage>
+        <presentation>Un enfant rejeté, brisé et avide de vengeance. Il deviendra cygne… ou monstre ?</presentation>
+        <rangee>2</rangee>
+        <titre>Le Vilain Petit Canard: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Godbout</nom>
+            <prenom>Yvan</prenom>
+        </auteur>
+        <colonne>6</colonne>
+        <emprunte>false</emprunte>
+        <id>12</id>
+        <parution>2017</parution>
+        <pathImage>https://tse4.mm.bing.net/th?id=OIP.eK1Q-dEqMuW8jYRPRe_A8AHaLepid=Api</pathImage>
+        <presentation>Deux enfants abandonnés par leurs parents… et livrés à eux-mêmes dans un monde de cannibalisme et de sorcellerie moderne.</presentation>
+        <rangee>2</rangee>
+        <titre>Hansel et Gretel: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Royer</nom>
+            <prenom>Maude</prenom>
+        </auteur>
+        <colonne>7</colonne>
+        <emprunte>false</emprunte>
+        <id>13</id>
+        <parution>2019</parution>
+        <pathImage>https://tse2.mm.bing.net/th?id=OIP.fvfjMjj45djBf_BS5JXVRwHaLepid=Api</pathImage>
+        <presentation>Quand la robe couleur de temps cache les traces d’un inceste royal et d’un désir aussi interdit que dérangeant.</presentation>
+        <rangee>2</rangee>
+        <titre>Peau d'Âne: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Maude</nom>
+            <prenom>Rückstühl</prenom>
+        </auteur>
+        <colonne>1</colonne>
+        <emprunte>false</emprunte>
+        <id>14</id>
+        <parution>2020</parution>
+        <pathImage>https://tse4.mm.bing.net/th?id=OIP.gGAW0SLPQZB-EspmWzIrLAHaLcpid=Api</pathImage>
+        <presentation>Un démon manipulateur, des dettes impayables et un pacte trop cher : l’enfant à naître en échange de miracles.</presentation>
+        <rangee>3</rangee>
+        <titre>Rumpelstiltskin: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Boivin</nom>
+            <prenom>Christian</prenom>
+        </auteur>
+        <colonne>2</colonne>
+        <emprunte>false</emprunte>
+        <id>15</id>
+        <parution>2018</parution>
+        <pathImage>https://tse2.mm.bing.net/th?id=OIP.D9XYKQJwDnR4P-UfG1vbjwHaLcpid=Api</pathImage>
+        <presentation>Le rejet et la transformation dans une version cruelle du conte de l’enfance bafouée et du monstre qu’elle engendre.</presentation>
+        <rangee>3</rangee>
+        <titre>Le Vilain Petit Canard: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Bédard</nom>
+            <prenom>David</prenom>
+        </auteur>
+        <colonne>3</colonne>
+        <emprunte>false</emprunte>
+        <id>16</id>
+        <parution>2021</parution>
+        <pathImage>https://tse3.mm.bing.net/th?id=OIP.b7bA_1qrbXkgWY_cyA9HUwHaLcpid=Api</pathImage>
+        <presentation>Loin de la lampe magique et des souhaits joyeux, Aladin ici s’élève dans la pègre, usant de magie noire et de manipulation.</presentation>
+        <rangee>3</rangee>
+        <titre>Aladin: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Laflamme</nom>
+            <prenom>Steve</prenom>
+        </auteur>
+        <colonne>4</colonne>
+        <emprunte>false</emprunte>
+        <id>17</id>
+        <parution>2021</parution>
+        <pathImage>https://tse1.mm.bing.net/th?id=OIP.Y_NwF5ewPDP0wL5lVoxuPgHaLcpid=Api</pathImage>
+        <presentation>La légende d’un tueur en série dans un récit moderne et macabre inspiré du fameux Barbe Bleue.</presentation>
+        <rangee>3</rangee>
+        <titre>Barbe Bleue: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Verdier</nom>
+            <prenom>Vic</prenom>
+        </auteur>
+        <colonne>5</colonne>
+        <emprunte>false</emprunte>
+        <id>18</id>
+        <parution>2021</parution>
+        <pathImage>https://tse2.mm.bing.net/th?id=OIP.Sm88nKdcYrCp3kJrShHwUwHaLcpid=Api</pathImage>
+        <presentation>Jack escalade vers un monde de démence, d’expériences scientifiques et de géants modifiés génétiquement.</presentation>
+        <rangee>3</rangee>
+        <titre>Jack et le Haricot Magique: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Thériault</nom>
+            <prenom>Gabriel</prenom>
+        </auteur>
+        <colonne>6</colonne>
+        <emprunte>false</emprunte>
+        <id>19</id>
+        <parution>2020</parution>
+        <pathImage>https://tse3.mm.bing.net/th?id=OIP.WtvQTYNVvMev2cF1O5zUAwHaLcpid=Api</pathImage>
+        <presentation>Une légende québécoise revisitée sous l’angle du pacte démoniaque, du sang et de la chasse éternelle.</presentation>
+        <rangee>3</rangee>
+        <titre>La Chasse-Galerie: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Johnson</nom>
+            <prenom>Sylvain</prenom>
+        </auteur>
+        <colonne>7</colonne>
+        <emprunte>false</emprunte>
+        <id>20</id>
+        <parution>2020</parution>
+        <pathImage>https://tse1.mm.bing.net/th?id=OIP.3X_3xaz5v7FXLMM6_k8K6wHaLepid=Api</pathImage>
+        <presentation>Mowgli n’a rien d’un enfant sauvage naïf : élevé par la violence et la cruauté, il devient un tueur implacable.</presentation>
+        <rangee>3</rangee>
+        <titre>Le Livre de la Jungle: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Royer</nom>
+            <prenom>Maude</prenom>
+        </auteur>
+        <colonne>1</colonne>
+        <emprunte>false</emprunte>
+        <id>21</id>
+        <parution>2018</parution>
+        <pathImage>https://tse4.mm.bing.net/th?id=OIP.qqqJYLnnU9IQGZFmoJFxcwHaLcpid=Api</pathImage>
+        <presentation>Une marionnette maléfique aux pulsions meurtrières : découvrez la vraie nature de Pinocchio dans ce conte interdit.</presentation>
+        <rangee>4</rangee>
+        <titre>Pinocchio: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>Rousseau</nom>
+            <prenom>Simon</prenom>
+        </auteur>
+        <colonne>2</colonne>
+        <emprunte>false</emprunte>
+        <id>22</id>
+        <parution>2018</parution>
+        <pathImage>https://tse1.mm.bing.net/th?id=OIP.3jZkN4zPI4kEFd7aTYbItQHaLepid=Api</pathImage>
+        <presentation>L’histoire revisitée d’une femme glaciale au cœur gelé, dans un monde où l’amour ne réchauffe plus rien.</presentation>
+        <rangee>4</rangee>
+        <titre>La Reine des Neiges: Les contes interdits</titre>
+    </livre>
+    <livre>
+        <auteur>
+            <id>0</id>
+            <nom>waa</nom>
+            <prenom>wou</prenom>
+        </auteur>
+        <colonne>1</colonne>
+        <emprunte>false</emprunte>
+        <id>0</id>
+        <parution>2022</parution>
+        <pathImage>zz</pathImage>
+        <presentation>yes</presentation>
+        <rangee>1</rangee>
+        <titre>test</titre>
+    </livre>
+</bibliotheque>

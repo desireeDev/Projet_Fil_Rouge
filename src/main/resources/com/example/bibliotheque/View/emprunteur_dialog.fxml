@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<DialogPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotheque.Controller.EmprunteurDialogController"
+            stylesheets="@style.css">
+    <content>
+        <VBox spacing="15">
+            <GridPane hgap="10" vgap="10">
+                <Label text="Nom :" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                <TextField fx:id="nomField" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+                <Label text="Prénom :" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                <TextField fx:id="prenomField" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+                <Label text="Date d'emprunt :" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                <DatePicker fx:id="dateEmpruntPicker" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+                <Label text="Date de rendu :" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                <DatePicker fx:id="dateRenduPicker" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+            </GridPane>
+            <HBox alignment="CENTER" spacing="10">
+                <Button fx:id="preterButton" text="Prêter" onAction="#handlePreter" />
+                <Button fx:id="annulerButton" text="Annuler" onAction="#handleAnnuler" />
+            </HBox>
+        </VBox>
+    </content>
+</DialogPane>
