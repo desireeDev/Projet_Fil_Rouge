@@ -1,40 +1,72 @@
 
-📚 Bibliothèque JavaFX Une application de gestion de bibliothèque développée en Java avec JavaFX et JAXB.
+📚 JavaFX Library Manager
 
-🎯 Objectifs du Projet Ce projet est divisé en plusieurs lots de développement.
-Le présent document concerne Lot 1 : Fondations de l'application.
+> Application de gestion de bibliothèque développée avec Java 17, JavaFX et JAXB.
+> Projet fil rouge intégrant les modules *Java Avancé*, *Agilité Scrum* et *DevOps*.
 
-📖 Gestion des livres : Créer, modifier, supprimer et consulter des livres.
+🧭 Présentation
 
-📂 Menu :
+L’objectif de cette application est de fournir une interface graphique intuitive permettant de gérer une bibliothèque numérique. Elle permet d’ajouter, modifier, supprimer et consulter des livres, avec une persistance des données en XML (via JAXB) et des options avancées telles que l’export Word et la gestion des emprunts.
 
-📁 Fichier : Ouvrir un fichier .xml, Quitter l'application.
+ 🧱 Fonctionnalités par Lot
 
-💾 Édition : Sauvegarder et Sauvegarder sous un fichier XML.
+✅ Lot 1 – Fondations de l’application
 
-ℹ️ About : Informations sur l'application et photos des développeurs.
+ 📖 CRUD complet des livres dans un tableau interactif
+
+✅ Lot 2 – Export & Gestion des Emprunts
+
+ 📤 Menu Export (Word):
+
+ 🔄 Ajout d’une gestion d’emprunt
+
+   Possibilité d’emprunter un livre depuis l’IHM
+   Mise à jour du fichier XML
+    Adaptation du schéma XSD
+
+### 🚧 **Lot 3 – Authentification & Synchronisation BDD**
+
+## 🧰 Technologies
+
+| Composant                | Usage                             |
+| ------------------------ | --------------------------------- |
+| Java 17+             | Langage principal                 |
+| JavaFX               | Interface utilisateur (UI)        |
+| JAXB                 | Lecture/écriture XML              |
+| Maven                | Gestionnaire de dépendances       |
+| SceneBuilder       | Conception visuelle des vues FXML |
+| GitLab             | Suivi de version et collaboration |
+| Apache POI  (Lot 2)| Génération de documents Word      |
+| JDBC/SQL      (Lot 3)   | Connexion à la base de données    |
 
 
-🛠️ Technologies Utilisées
+## 🗂️ Arborescence du projet
 
-Langage : Java 17+
+```
+📦 bibliothèque-javafx
+ ┣ 📂 src
+ ┃ ┣ 📂 controller       → Logique de l’interface (JavaFX)
+ ┃ ┣ 📂 model            → Représentation des entités (Livre, etc.)
+ ┃ ┣ 📂 view             → Vues FXML et éléments UI
+ ┃ ┗ 📜 Main.java        → Point d’entrée de l’application
+ ┣ 📜 pom.xml            → Fichier de configuration Maven
+ ┣ 📜 bibliothèque.xml   → Données persistées
+ ┣ 📜 schema.xsd         → Schéma de validation XML
+ ┗ 📜 README.md          → Documentation du projet
+```
 
-Interface Graphique : JavaFX
+---
 
-Gestion des Fichiers XML : JAXB (Java Architecture for XML Binding)
+#👨‍💻 Équipe de développement
 
-Outils : IntelliJ IDEA, Maven
-
-
-
-
-
-👥 Auteurs
 Syntiche Désirée Attoh
 Asma Trouky
 Isaac Gaston
 Comin Leo
 
 
+> Nécessite Java 17 et Maven installés
 
-🎯 Bon Développement !
+
+ ✨ Bon développement à toutes et à tous !
+
