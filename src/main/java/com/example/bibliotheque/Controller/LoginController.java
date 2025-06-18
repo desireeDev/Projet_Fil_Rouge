@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import utils.DatabaseConnection;
+import com.example.bibliotheque.Session;
 
 import java.io.IOException;
 
@@ -36,10 +37,14 @@ public class LoginController {
 
         if (DatabaseConnection.login(username, password)) {
             String role = DatabaseConnection.getRole(username);
+
             if (role == null) {
                 showAlert("Erreur", "Impossible de récupérer le rôle utilisateur.");
                 return;
             }
+
+            // ✅ Stocke le rôle uniquement si valide
+            Session.setCurrentUserRole(role);
 
             try {
                 Parent root;
@@ -47,7 +52,7 @@ public class LoginController {
                 if (role.equalsIgnoreCase("Admin")) {
                     root = FXMLLoader.load(getClass().getResource("/com/example/bibliotheque/View/home.fxml"));
                 } else {
-                    root = FXMLLoader.load(getClass().getResource("/com/example/bibliotheque/View/userHome.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("/com/example/bibliotheque/View/Home.fxml"));
                 }
 
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

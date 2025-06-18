@@ -24,13 +24,18 @@ import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import java.awt.*;
+//import java.awt.*;
+import java.awt.FileDialog;
+import java.awt.Frame;
+
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 
 import utils.BookExporter;
 import utils.DatabaseConnection;
+import com.example.bibliotheque.Session;
+import javafx.scene.layout.GridPane;
 
 public class BibliothequeController {
      // TableView affichant la liste des livres
@@ -63,6 +68,8 @@ public class BibliothequeController {
     // MenuItems pour sauvegarde
     @FXML private MenuItem saveMenuItem;
     @FXML private MenuItem saveAsMenuItem;
+    @FXML private Menu menuAdmin;
+    @FXML private GridPane formulaireAjout;
     // CheckBox pour indiquer si le livre est emprunté
     @FXML private CheckBox emprunteCheckBox;
     @FXML private Emprunteur emprunteurTemporaire = null;
@@ -100,6 +107,12 @@ public BibliothequeController() {
      * charge la bibliothèque dans la TableView et ajoute la colonne d'actions.
      */
     public void initialize() {
+        // Cacher le menu si l'utilisateur n'est pas admin
+        if (!Session.isAdmin()) {
+            menuAdmin.setVisible(false);
+            formulaireAjout.setVisible(false);
+            //menuAdmin.setManaged(false);
+        }
 
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<Livre,String>("titre"));

@@ -12,7 +12,7 @@
             <MenuItem text="Exporter" fx:id="itemExport" onAction="#handleExport"/>
             <MenuItem text="Quitter" fx:id="itemQuitter" onAction="#handleLeft"/>
         </Menu>
-        <Menu text="Edition">
+        <Menu text="Edition" fx:id="menuAdmin">
             <MenuItem text="Sauvegarder" fx:id="itemSauvegarder" onAction="#handleSave"/>
             <MenuItem text="Sauvegarder sous" fx:id="itemSauvegarderSous" onAction="#handleSaveAs"/>
         </Menu>
@@ -24,7 +24,7 @@
     <Label text="Formulaire d'Ajout de livres" style="-fx-font-size: 22px; -fx-font-weight: bold;-fx-text-fill: #154c79" />
 
     <!-- Formulaire d'ajout de livre -->
-    <GridPane hgap="10" vgap="10">
+    <GridPane fx:id="formulaireAjout" hgap="10" vgap="10">
         <Label text="Titre :" GridPane.rowIndex="0" GridPane.columnIndex="0" />
         <TextField fx:id="titreField" GridPane.rowIndex="0" GridPane.columnIndex="1" />
         <Label text="Nom de l'auteur :" GridPane.rowIndex="1" GridPane.columnIndex="0" />
