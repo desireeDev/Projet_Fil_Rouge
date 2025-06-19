@@ -4,6 +4,7 @@ import com.example.bibliotheque.Model.Bibliotheque;
 // Keep Emprunteur if you plan to use it for 'rendre' (return) later
 import com.example.bibliotheque.Model.Livre;
 import com.example.bibliotheque.Model.Auteur;
+import com.example.bibliotheque.Session;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -16,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -54,6 +56,8 @@ public class BibliothequeController {
     @FXML private TextField pathImageField;
     @FXML private Label errorLabel;
     @FXML private CheckBox emprunteCheckBox;
+    @FXML private Menu menuAdmin;
+    @FXML private GridPane formulaireAjout;
 
     // --- Internal State Variables ---
     private Bibliotheque bibliotheque;
@@ -87,6 +91,7 @@ public class BibliothequeController {
             livresObservable = FXCollections.observableArrayList();
         }
     }
+
 
     /**
      * Initializes the controller after its root element has been completely processed.
@@ -538,4 +543,12 @@ public class BibliothequeController {
     public TableView<Livre> getTableView() {
         return tableView;
     }
-}
+    //Fonction pour caacher le menu
+    public void initialized() {
+        // Cacher le menu si l'utilisateur n'est pas admin
+        if (!Session.isAdmin()) {
+            menuAdmin.setVisible(false);
+            formulaireAjout.setVisible(false);
+            //menuAdmin.setManaged(false);
+        }
+}}
